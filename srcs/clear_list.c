@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:18:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 10:32:32 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:56:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,13 @@ void	clear_list(t_int_list **list)
 
 	while ((tmp = extract_first(list)))
 		free(tmp);
+}
+
+void	clear_ps(t_ps *ps)
+{
+	clear_list(&(ps->a->lst));
+	clear_list(&(ps->b->lst));
+	clear_cmds(&(ps->cmds));
+	free(ps->a);
+	free(ps->b);
 }

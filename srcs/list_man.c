@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:04:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/12 18:40:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:15:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,105 @@ t_int_list	*extract_last(t_int_list **head)
 		current->next = NULL;
 	}
 	return (last);
+}
+
+/*
+** List mMIN
+*/
+
+int	find_min(t_int_list *list)
+{
+	int min;
+
+	min = INT_MAX;
+	while (list)
+	{
+		min > list->nb ? min = list->nb : 0;
+		list = list->next;
+	}
+	return (min);
+}
+
+/*
+** List MAX
+*/
+
+int	find_max(t_int_list *list)
+{
+	int max;
+
+	max = INT_MIN;
+	while (list)
+	{
+		max < list->nb ? max = list->nb : 0;
+		list = list->next;
+	}
+	return (max);
+}
+
+/*
+** Returns amount of nodes in a list
+*/
+
+int	count_list(t_int_list *list)
+{
+	int cnt;
+
+	cnt = 0;
+	while (list)
+	{
+		cnt++;
+		list = list->next;
+	}
+	return (cnt);
+}
+
+/*
+** Returns amount of commands in the list
+*/
+
+int	count_cmd_list(t_cmd *list)
+{
+	int cnt;
+
+	cnt = 0;
+	while (list)
+	{
+		cnt++;
+		list = list->next;
+	}
+	return (cnt);
+}
+
+/*
+** Returns value of the last node
+*/
+
+int	get_last(t_int_list *list)
+{
+	while (list->next)
+		list = list->next;
+	return (list->nb);
+}
+
+/*
+** Checks if the int list is valaid (cannot contain duplicates)
+*/
+
+int	check_valid(t_int_list *list)
+{
+	t_int_list *tmp;
+
+	while (list)
+	{
+		tmp = list->next;
+		while (tmp)
+		{
+			if (list->nb == tmp->nb)
+				return (0);
+			tmp = tmp->next;
+		}
+		list = list->next;
+	}
+	return (1);
 }

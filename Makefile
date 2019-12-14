@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2019/12/14 10:39:20 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/12/14 15:40:28 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ FTS =	check_sort.c \
 		error_exit.c \
 		list_man.c \
 		list_print.c \
-		push_swap_ops.c
+		push_swap_ops.c \
+		push_swap.c
 
 FTO = $(FTS.c=.o)
 
@@ -42,7 +43,7 @@ O_DIR = ./objs/
 
 SRCS = $(addprefix $(S_DIR), $(FTS))
 
-PS_M = ./srcs/main.c
+PS_M = ./srcs/main_pushswap.c
 CH_M = ./srcs/main_checker.c
 
 CFLAGS = -Wall -Werror -Wextra -O3

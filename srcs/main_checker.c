@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:33:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 11:54:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/14 11:59:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int		main(int ac, char **av)
 	clear_cmds(&cmds);
 	clear_list(&a);
 	clear_list(&b);
-	while(1){}
+	// while(1){}
 	return (0);
 }
