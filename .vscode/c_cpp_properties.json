@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/Users/jnovotny/Documents/Hive_Phase_1/algorithm_branch/printf/includes"
+				"/Users/jnovotny/Documents/Hive_Phase_1/algorithm_branch/printf/includes",
+				"/usr/local/include/"
             ],
             "defines": [],
             "macFrameworkPath": [

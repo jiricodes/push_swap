@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*   vfx_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 12:32:37 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/12/16 12:53:42 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/12/16 12:59:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef VFX_PUSH_SWAP_H
+# define VFX_PUSH_SWAP_H
 
-int	main(int ac, char **av)
+# include "mlx.h"
+
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+
+typedef struct	s_ps_vfx
 {
-	int			i;
-	t_ps		ps;
-	char		*flgs;
-
-	i = 0;
-	init_ps(&ps);
-	flgs = ft_getflags_arg(ac, av, FLG_STR);
-	ps_flags(&ps, flgs);
-	free(flgs);
-	ps_fetch_flgdata(&ps, ac, av);
-	ps_fetch_numbers(&ps, ac, av);
-	if (!check_valid(ps.a->lst))
-		error_exit("Ivalid list of numbers (contains duplicates)");
-	push_swap(&ps);
-	// while(1){}
-	return (0);
-}
+	void	*mlx_p;
+	void	*win_p;
+	int		w;
+	int		h;
+	int		rat;
+}				t_ps_vfx;
+#endif

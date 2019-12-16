@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 19:26:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:49:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	push_swap(t_ps *ps)
 	ps_info(ps);
 	i = 0;
 	pos = 0;
-	while (!(is_rot_sort(ps->a) && B_LST == NULL) && i < 10)
+	while (!(is_rot_sort(ps->a) && B_LST == NULL) && i < 100)
 	{
 		ft_printf("i = %d: ", i);
-		if (A_TOP > A_2ND && A_TOP < A_LAST && A_CNT > B_CNT)
+		if (A_TOP > A_2ND && A_CNT > B_CNT)
 			do_pb(ps);
 		else if (B_LST && B_TOP > A_LAST && B_TOP < A_TOP)
 			do_pa(ps);
@@ -35,6 +35,14 @@ void	push_swap(t_ps *ps)
 			do_ra(ps);
 		else if (A_TOP < A_2ND && A_TOP < A_LAST)
 			do_rra(ps);
+		if (is_rot_sort(ps->a))
+			while (B_LST)
+			{
+				if ((B_TOP > A_LAST && B_TOP < A_TOP) || (B_TOP > A_MAX && A_LAST == A_MAX))
+					do_pa(ps);
+				else
+					do_ra(ps);
+			}
 		print_list(A_LST, "a @ps", ' ');
 		print_list(B_LST, "b @ps", ' ');
 		i++;
@@ -45,7 +53,7 @@ void	push_swap(t_ps *ps)
 	ft_printf("pos = %d\n", pos);
 	if (pos <= ps->count / 2)
 	{
-		while (pos-- > 0)
+		while (pos-- > 1)
 			do_ra(ps);
 	}
 	else
@@ -53,7 +61,9 @@ void	push_swap(t_ps *ps)
 		while (pos++ <= ps->count)
 			do_rra(ps);
 	}
-	print_cmd_list(ps->cmds);
+	print_cmd_list(CMD);
+	if (FLG_T)
+		ft_printf("Total: %d\n", count_cmd_list(CMD));
 	print_list(A_LST, "a @ps end", ' ');
 	print_list(B_LST, "b @ps end", ' ');
 	clear_ps(ps);

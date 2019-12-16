@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 17:52:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:53:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include "vfx_push_swap.h"
 
+# define FLG_STR "fvstciu"
+# define FLG_F ps->flags.f
+# define FLG_V ps->flags.v
+# define FLG_S ps->flags.s
+# define FLG_T ps->flags.t
+# define FLG_C ps->flags.c
 # define A_LST ps->a->lst
 # define A_CNT ps->a->count
 # define A_MAX ps->a->max
@@ -51,6 +58,18 @@ typedef struct	s_stack
 	t_int_list	*lst;
 }				t_stk;
 
+typedef struct	s_flags
+{
+	char	f;
+	int		fd;
+	char	v;
+	char	s;
+	int		sec;
+	char	t;
+	char	c;
+	int		color;
+}				t_flg;
+
 typedef struct s_push_swap
 {
 	int			count;
@@ -59,9 +78,7 @@ typedef struct s_push_swap
 	t_stk		*a;
 	t_stk		*b;
 	t_cmd		*cmds;
-	int			visuals;
-	int			color;
-	int			fd;
+	t_flg		flags;
 }				t_ps;
 
 
@@ -147,10 +164,20 @@ void		print_list(t_int_list *list, char *name, char separator);
 void		print_cmd_list(t_cmd *list);
 
 /*
+**	Reading list of numbers
+*/
+
+void	ps_fetch_numbers(t_ps *ps, int ac, char **av);
+void	ps_readfile(t_ps *ps);
+void	ps_readargs(t_ps *ps, int ac, char **av);
+
+/*
 ** Supportive tools
 */
 
 void		error_exit(char *str);
+void		ps_usage_exit(void);
+void		ps_info_exit(void);
 int			is_sort_list(t_int_list *list);
 int			is_rot_sort(t_stk *stack);
 int			find_min(t_int_list *list);
@@ -162,5 +189,8 @@ void		init_ps(t_ps *ps);
 void		clear_ps(t_ps *ps);
 int			check_valid(t_int_list *list);
 int			find_slot(t_int_list *list, int nb);
+void		ps_flags(t_ps *ps, char *flags);
+char		*ft_getflags_arg(int ac, char **av, char *range);
+void		ps_fetch_flgdata(t_ps *ps, int ac, char **av);
 
 #endif

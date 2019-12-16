@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:18:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 15:56:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 11:58:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,7 @@ void	clear_ps(t_ps *ps)
 	clear_cmds(&(ps->cmds));
 	free(ps->a);
 	free(ps->b);
+	if (FLG_F)
+		if (close(ps->flags.fd) == -1)
+			error_exit("Failed to close the given file");
 }
