@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:04:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 17:15:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:58:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,4 +231,41 @@ int	check_valid(t_int_list *list)
 		list = list->next;
 	}
 	return (1);
+}
+
+/*
+** Finds position of given value
+*/
+
+int	find_nb_pos(t_int_list *list, int nb)
+{
+	int		i;
+
+	i = 1;
+	while (list && list->nb != nb)
+	{
+		list = list->next;
+		i++;
+	}
+	if (list)
+		return (i);
+	else
+		return (-1);
+}
+
+int	find_slot_rotsort(t_int_list *list, int nb, int max)
+{
+	int		i;
+
+	if (nb > max)
+		return (find_nb_pos(list, max));
+	i = 1;
+	while (list && list->next)
+	{
+		if (nb > list->nb && nb < list->next->nb)
+			return (i);
+		list = list->next;
+		i++;
+	}
+	return (i);
 }

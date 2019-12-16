@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 12:28:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:34:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ps_readfile(t_ps *ps)
 			if (!isdigit(str[i]))
 				error_exit("File contains invalid characters");
 			A_LST = create_back(A_LST, ft_atoi(&str[i]));
+			ps->org = create_back(ps->org, ft_atoi(&str[i]));
 			while (isdigit(str[i]))
 				i++;
 		}
@@ -62,5 +63,8 @@ void	ps_readargs(t_ps *ps, int ac, char **av)
 	if (ft_strstr(av[i], "-s") || ft_strstr(av[i], "-c"))
 		i++;
 	while (++i < ac)
+	{
 		A_LST = create_back(A_LST, ft_atoi(av[i]));
+		ps->org = create_back(ps->org, ft_atoi(av[i]));
+	}
 }

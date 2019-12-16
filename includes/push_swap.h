@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 12:53:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:32:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_push_swap
 	int			count;
 	int			min;
 	int			max;
+	t_int_list	*org;
 	t_stk		*a;
 	t_stk		*b;
 	t_cmd		*cmds;
@@ -184,6 +185,8 @@ int			find_min(t_int_list *list);
 int			find_max(t_int_list *list);
 int			count_list(t_int_list *list);
 int			get_last(t_int_list *list);
+int			find_nb_pos(t_int_list *list, int nb);
+int			find_slot_rotsort(t_int_list *list, int nb, int max);
 int			count_cmd_list(t_cmd *list);
 void		init_ps(t_ps *ps);
 void		clear_ps(t_ps *ps);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 12:49:37 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:35:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ void	push_swap(t_ps *ps)
 	{
 		ft_printf("i = %d: ", i);
 		if (A_TOP > A_2ND && A_CNT > B_CNT)
+		{
+			if (B_LST && A_TOP < B_TOP && A_TOP > B_MIN)
+				while (A_TOP < B_TOP)
+					do_rb(ps);
+			else if (B_CNT > 1 && A_TOP > B_LAST && A_TOP < B_MAX)
+				while (A_TOP > B_LAST)
+					do_rrb(ps);
 			do_pb(ps);
+		}
 		else if (B_LST && B_TOP > A_LAST && B_TOP < A_TOP)
 			do_pa(ps);
 		else if (A_TOP > A_2ND)
@@ -36,13 +44,27 @@ void	push_swap(t_ps *ps)
 		else if (A_TOP < A_2ND && A_TOP < A_LAST)
 			do_rra(ps);
 		if (is_rot_sort(ps->a))
+		{
+			if (find_nb_pos(B_LST, B_MAX) < B_CNT / 2)
+				while (B_TOP != B_MAX)
+					do_rb(ps);
+			else
+				while (B_TOP != B_MAX)
+					do_rrb(ps);
+			print_list(A_LST, "a @rot_sort", ' ');
+			print_list(B_LST, "b @a_rot_sort", ' ');
 			while (B_LST)
 			{
 				if ((B_TOP > A_LAST && B_TOP < A_TOP) || (B_TOP > A_MAX && A_LAST == A_MAX))
 					do_pa(ps);
-				else
+				else if (find_slot_rotsort(A_LST, B_TOP, A_MAX) < (A_CNT / 2))
 					do_ra(ps);
+				else
+					do_rra(ps);
+				print_list(A_LST, "a @zip", ' ');
+				print_list(B_LST, "b @zip", ' ');
 			}
+		}
 		print_list(A_LST, "a @ps", ' ');
 		print_list(B_LST, "b @ps", ' ');
 		i++;
@@ -72,6 +94,7 @@ void	push_swap(t_ps *ps)
 void	init_ps(t_ps *ps)
 {
 	ft_bzero(ps, sizeof(t_ps));
+	ps->org = NULL;
 	ps->a = (t_stk*)malloc(sizeof(t_stk));
 	ft_bzero(ps->a, sizeof(t_stk));
 	ps->a->lst = NULL;
