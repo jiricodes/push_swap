@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 15:52:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:26:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	visualise_ps(t_ps *ps)
 	mlx_loop_hook(ps->VFX_P, vfx_do_pushswap, ps);
 	mlx_loop(ps->VFX_P);
 }
+
+/*
+** Key HOLD
+*/
 
 int		ps_vfx_key_press(int key, t_ps *ps)
 {
@@ -43,6 +47,16 @@ int		ps_vfx_key_press(int key, t_ps *ps)
 	}
 	else if (key == KEY_SPC)
 		PAUSE = PAUSE ? 0 : 1;
+	else if (key == KEY_ARROW_UP)
+	{
+		if (ps->vfx_gc <= VFX_WHITE - 100)
+			ps->vfx_gc += 100;
+	}
+	else if (key == KEY_ARROW_DOWN)
+	{
+		if (ps->vfx_gc >= 100)
+			ps->vfx_gc -= 100;
+	}
 	else
 	{
 		ft_printf("Pressed key_id %d\n", key);
