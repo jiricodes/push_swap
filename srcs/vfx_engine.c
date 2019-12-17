@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*   vfx_engine.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:05:39 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/12/17 09:59:03 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/12/17 11:28:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	vfx_create_rectangle_img(void *mlx_ptr, t_vfx_img *elem)
 {
-	int			i;
-	t_ps		ps;
-	char		*flgs;
+	int		i;
 
+	elem->img = mlx_new_image(mlx_ptr, elem->width, elem->height);
+	elem->img_p = mlx_get_data_addr(elem->img, &(elem->bpp),\
+		&(elem->line_s), &(elem->endian));
 	i = 0;
-	init_ps(&ps);
-	flgs = ft_getflags_arg(ac, av, FLG_STR);
-	ps_flags(&ps, flgs);
-	free(flgs);
-	ps_fetch_flgdata(&ps, ac, av);
-	ps_fetch_numbers(&ps, ac, av);
-	if (!check_valid(ps.a->lst))
-		error_exit("Ivalid list of numbers (contains duplicates)");
-	push_swap(&ps);
-	// while(1){}
-	return (0);
+	while (i < elem->width * elem->height)
+	{
+		*(int *)(elem->img_p + (int)(i * (elem->bpp / 8))) = elem->color;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2019/12/16 12:17:43 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/12/17 11:48:23 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ FTS =	check_sort.c \
 		list_print.c \
 		push_swap_ops.c \
 		push_swap.c \
-		read_numbers.c
+		read_numbers.c \
+		visualize.c \
+		vfx_draw_env.c \
+		vfx_draw_text.c \
+		vfx_engine.c \
+		vfx_environment.c
 
 FTO = $(FTS.c=.o)
 
@@ -50,7 +55,7 @@ CH_M = ./srcs/main_checker.c
 
 CFLAGS = -Wall -Werror -Wextra -O3
 
-# GRAPHIC = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+GRAPHIC = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
 .PHONY: all clean fclean re libft
 
@@ -60,11 +65,11 @@ libft:
 	# @make -C ./library
 
 $(NAME):
-	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(PS_M)
+	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(PS_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(NAME)$(C_GREEN) was compiled]$(C_RES)"
 
 $(CHECK):
-	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(CH_M)
+	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(CH_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 clean:

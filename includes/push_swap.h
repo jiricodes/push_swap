@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 15:32:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 12:51:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ typedef struct s_push_swap
 	t_stk		*b;
 	t_cmd		*cmds;
 	t_flg		flags;
+	t_ps_vfx	*vfx;
+	t_stk		*vfx_a;
+	t_stk		*vfx_b;
+	t_cmd		*vfx_cmds;
 }				t_ps;
-
-
 
 /*
 ** Main Push_Swap hubs and functions
@@ -195,5 +197,20 @@ int			find_slot(t_int_list *list, int nb);
 void		ps_flags(t_ps *ps, char *flags);
 char		*ft_getflags_arg(int ac, char **av, char *range);
 void		ps_fetch_flgdata(t_ps *ps, int ac, char **av);
+
+/*
+** PUSH_SWAP vfx environment initialization
+*/
+
+void	vfx_init(t_ps *ps, t_ps_vfx *vfx);
+void	vfx_init_elems(t_ps *ps, t_ps_vfx *vfx);
+
+/*
+** General Push_Swap VFX functions
+*/
+
+void	visualise_ps(t_ps *ps);
+int		ps_vfx_key_press(int key, t_ps *ps);
+void	vfx_copy_info(t_ps *ps);
 
 #endif

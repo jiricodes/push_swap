@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:34:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 19:16:17 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 11:07:33 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ int		is_rot_sort(t_stk *stack)
 	{
 		if (tmp->nb > tmp->next->nb && (tmp->nb != stack->max ||\
 			tmp->next->nb != stack->min))
-			{
-				ft_printf("\n");
-				return (0);
-			}
+		{
+			ft_printf("\n");
+			return (0);
+		}
 		ft_printf("%d <= %d | ", tmp->nb, tmp->next->nb);
 		if (tmp->nb == stack->min)
 			position = i;
+		else if (tmp->next->nb == stack->min)
+			position = i + 1;
 		tmp = tmp->next;
 		i++;
 	}

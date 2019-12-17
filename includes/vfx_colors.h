@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*   vfx_colors.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:05:39 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/12/17 10:16:48 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/12/17 10:34:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef VFX_COLORS_H
+# define VFX_COLORS_H
 
-int	main(int ac, char **av)
-{
-	int			i;
-	t_ps		ps;
-	char		*flgs;
+# define VFX_RED 16711680
+# define VFX_ORANGE 16733440
+# define VFX_WHITE 16777215
+# define VFX_BLUE 255
+# define VFX_L_BLUE 7973364
+# define VFX_GREEN 65280
+# define VFX_L_GREEN 11992832
+# define VFX_YELLOW 16776960
+# define VFX_PINK 16711935
+# define VFX_BLACK 0
 
-	i = 0;
-	init_ps(&ps);
-	flgs = ft_getflags_arg(ac, av, FLG_STR);
-	ps_flags(&ps, flgs);
-	free(flgs);
-	ps_fetch_flgdata(&ps, ac, av);
-	ps_fetch_numbers(&ps, ac, av);
-	if (!check_valid(ps.a->lst))
-		error_exit("Ivalid list of numbers (contains duplicates)");
-	push_swap(&ps);
-	// while(1){}
-	return (0);
-}
+#endif

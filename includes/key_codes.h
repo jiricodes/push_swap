@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*   key_codes.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:05:39 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/12/17 12:15:52 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/12/17 12:41:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef KEY_CODES_H
+# define KEY_CODES_H
 
-int	main(int ac, char **av)
-{
-	int			i;
-	t_ps		ps;
-	char		*flgs;
-
-	i = 0;
-	init_ps(&ps);
-	flgs = ft_getflags_arg(ac, av, FLG_STR);
-	ps_flags(&ps, flgs);
-	free(flgs);
-	ps_fetch_flgdata(&ps, ac, av);
-	ps_fetch_numbers(&ps, ac, av);
-	if (!check_valid(ps.a->lst))
-		error_exit("Ivalid list of numbers (contains duplicates)");
-	push_swap(&ps);
-	// while(1){}
-	return (0);
-}
+# define KEY_ESC 53
+# define KEY_C 8
+# define KEY_L 37
+# define KEY_P 35
+# define KEY_ARROW_UP 126
+# define KEY_ARROW_DOWN 125
+# define KEY_ARROW_RIGHT 124
+# define KEY_ARROW_LEFT 123
+#endif

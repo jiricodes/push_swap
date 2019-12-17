@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 15:35:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 11:05:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	push_swap(t_ps *ps)
 	ft_printf("pos = %d\n", pos);
 	if (pos <= ps->count / 2)
 	{
-		while (pos-- > 1)
+		while (pos-- > 0)
 			do_ra(ps);
 	}
 	else
@@ -88,6 +88,8 @@ void	push_swap(t_ps *ps)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
 	print_list(A_LST, "a @ps end", ' ');
 	print_list(B_LST, "b @ps end", ' ');
+	if (FLG_V)
+		visualise_ps(ps);
 	clear_ps(ps);
 }
 
