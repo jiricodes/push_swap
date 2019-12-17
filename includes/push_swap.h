@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:51:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:02:21 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_push_swap
 	t_stk		*vfx_a;
 	t_stk		*vfx_b;
 	t_cmd		*vfx_cmds;
+	int			vfx_gc;
 }				t_ps;
 
 /*
@@ -170,9 +171,9 @@ void		print_cmd_list(t_cmd *list);
 **	Reading list of numbers
 */
 
-void	ps_fetch_numbers(t_ps *ps, int ac, char **av);
-void	ps_readfile(t_ps *ps);
-void	ps_readargs(t_ps *ps, int ac, char **av);
+void		ps_fetch_numbers(t_ps *ps, int ac, char **av);
+void		ps_readfile(t_ps *ps);
+void		ps_readargs(t_ps *ps, int ac, char **av);
 
 /*
 ** Supportive tools
@@ -202,15 +203,20 @@ void		ps_fetch_flgdata(t_ps *ps, int ac, char **av);
 ** PUSH_SWAP vfx environment initialization
 */
 
-void	vfx_init(t_ps *ps, t_ps_vfx *vfx);
-void	vfx_init_elems(t_ps *ps, t_ps_vfx *vfx);
+void		vfx_init(t_ps *ps, t_ps_vfx *vfx);
+void		vfx_init_elems(t_ps_vfx *vfx);
 
 /*
 ** General Push_Swap VFX functions
 */
 
-void	visualise_ps(t_ps *ps);
-int		ps_vfx_key_press(int key, t_ps *ps);
-void	vfx_copy_info(t_ps *ps);
+void		visualise_ps(t_ps *ps);
+int			ps_vfx_key_press(int key, t_ps *ps);
+void		vfx_copy_info(t_ps *ps);
+void		vfx_draw_graph_a(t_ps *ps);
+void		vfx_draw_graph_b(t_ps *ps);
+int			vfx_do_pushswap(t_ps *ps);
+void		vfx_graph_step(t_ps *ps);
+void		vfx_draw_cmds(t_ps *ps);
 
 #endif

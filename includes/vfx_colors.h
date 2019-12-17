@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:16:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 10:34:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 14:06:38 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # define VFX_YELLOW 16776960
 # define VFX_PINK 16711935
 # define VFX_BLACK 0
+# define VFX_D_GRAY 6579300
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:34:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 11:07:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 14:59:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int		is_rot_sort(t_stk *stack)
 		i++;
 	}
 	ft_printf("\n");
-	return (position);
+	if (tmp->nb > stack->lst->nb)
+		return (0);
+	else
+		return (position);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:43:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 15:52:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	visualise_ps(t_ps *ps)
 		"Push Swap by jnovotny@student.hive.fi");
 	vfx_draw_env(ps->vfx);
 	mlx_hook(ps->VFX_W, 2, 0, ps_vfx_key_press, ps);
-	// mlx_loop_hook(vfx.mlx_p, do_push_swap, ps);
+	mlx_loop_hook(ps->VFX_P, vfx_do_pushswap, ps);
 	mlx_loop(ps->VFX_P);
 }
 
@@ -35,7 +35,14 @@ int		ps_vfx_key_press(int key, t_ps *ps)
 	else if (key == KEY_L)
 		vfx_show_legend();
 	else if (key == KEY_C)
-		ps->vfx->cmd_line = ps->vfx->cmd_line == 0 ? 1 : 0;
+		CMD_LN = !CMD_LN ? 1 : 0;
+	else if (key == KEY_ARROW_RIGHT)
+	{
+		PAUSE = 1;
+		vfx_graph_step(ps);
+	}
+	else if (key == KEY_SPC)
+		PAUSE = PAUSE ? 0 : 1;
 	else
 	{
 		ft_printf("Pressed key_id %d\n", key);

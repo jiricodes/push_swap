@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:15:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:41:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 15:37:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define KEY_CODES_H
 
 # define KEY_ESC 53
+# define KEY_SPC 49
 # define KEY_C 8
 # define KEY_L 37
 # define KEY_P 35

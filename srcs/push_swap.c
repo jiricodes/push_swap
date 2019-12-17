@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 11:05:11 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/17 15:13:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_swap(t_ps *ps)
 	ps_info(ps);
 	i = 0;
 	pos = 0;
-	while (!(is_rot_sort(ps->a) && B_LST == NULL) && i < 100)
+	while (!(is_rot_sort(ps->a) && B_LST == NULL) && i < 10000)
 	{
 		ft_printf("i = %d: ", i);
 		if (A_TOP > A_2ND && A_CNT > B_CNT)
@@ -75,12 +75,12 @@ void	push_swap(t_ps *ps)
 	ft_printf("pos = %d\n", pos);
 	if (pos <= ps->count / 2)
 	{
-		while (pos-- > 0)
+		while (!is_sort_list(A_LST))
 			do_ra(ps);
 	}
 	else
 	{
-		while (pos++ <= ps->count)
+		while (!is_sort_list(A_LST))
 			do_rra(ps);
 	}
 	print_cmd_list(CMD);
