@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2019/12/17 14:28:07 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/12/18 16:48:29 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,9 @@ FTS =	check_sort.c \
 		ft_getflags_arg.c \
 		list_man.c \
 		list_print.c \
+		ps_quicksort.c \
 		push_swap_ops.c \
-		push_swap.c \
+		push_swap_quicksrt.c \
 		read_numbers.c \
 		visualize.c \
 		vfx_draw_env.c \

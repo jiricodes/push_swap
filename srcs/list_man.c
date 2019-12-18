@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:04:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 14:58:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:21:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,10 @@ int	find_nb_pos(t_int_list *list, int nb)
 		return (-1);
 }
 
+/*
+** Finds a slot for given number in rotated sorted list
+*/
+
 int	find_slot_rotsort(t_int_list *list, int nb, int max)
 {
 	int		i;
@@ -268,4 +272,70 @@ int	find_slot_rotsort(t_int_list *list, int nb, int max)
 		i++;
 	}
 	return (i);
+}
+
+/*
+**	Finds median value of the list
+*/
+
+int	get_median(t_int_list *list)
+{
+	int		cnt;
+	int		tot;
+
+	cnt = 0;
+	tot = 0;
+	while (list)
+	{
+		cnt++;
+		tot += list->nb;
+		list = list->next;
+	}
+	return (tot / cnt);
+}
+
+/*
+**	Suffixes list b to list a and returns pointer to the head of a
+*/
+
+t_int_list	*ps_join_lsts(t_int_list *a, t_int_list *b)
+{
+	t_int_list *tmp;
+
+	tmp = a;
+	if (!tmp)
+		return (b);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = b;
+	return (a);
+}
+
+/*
+**	Finds a value in given lists and extracts that node
+*/
+
+t_int_list	*extract_nb(t_int_list **head, int nb)
+{
+	t_int_list	*node;
+	t_int_list	*current;
+
+	if (!*head)
+		return (NULL);
+	current = *head;
+	if (current->nb == nb)
+		return (extract_first(head));
+	while (current->next)
+	{
+		if (current->next->nb == nb)
+		{
+			node = current->next;
+			current->next = node->next;
+			node->next = NULL;
+			return (node);
+		}
+		else
+			current = current->next;
+	}
+	return (NULL);
 }

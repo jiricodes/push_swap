@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 16:02:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:21:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,25 +91,27 @@ typedef struct s_push_swap
 ** Main Push_Swap hubs and functions
 */
 
-void		ps_checker(t_int_list **a, t_int_list **b, t_cmd *cmd);
-void		is_correct_ps(t_int_list *a, t_int_list *b);
-void		ps_info(t_ps *ps);
-void		push_swap(t_ps *ps);
-void		do_pb(t_ps *ps);
-void		do_pa(t_ps *ps);
+void			ps_checker(t_int_list **a, t_int_list **b, t_cmd *cmd);
+void			is_correct_ps(t_int_list *a, t_int_list *b);
+void			ps_info(t_ps *ps);
+void			push_swap(t_ps *ps);
+void			do_pb(t_ps *ps);
+void			do_pa(t_ps *ps);
 
 /*
 ** List Management Functions
 */
 
-t_int_list	*create_node(int nb);
-t_int_list	*add_front(t_int_list *head, t_int_list *node);
-t_int_list	*add_back(t_int_list *head, t_int_list *node);
-t_int_list	*create_front(t_int_list *head, int nb);
-t_int_list	*create_back(t_int_list *head, int nb);
-t_int_list	*extract_first(t_int_list **head);
-t_int_list	*extract_last(t_int_list **head);
-void		clear_list(t_int_list **list);
+t_int_list		*create_node(int nb);
+t_int_list		*add_front(t_int_list *head, t_int_list *node);
+t_int_list		*add_back(t_int_list *head, t_int_list *node);
+t_int_list		*create_front(t_int_list *head, int nb);
+t_int_list		*create_back(t_int_list *head, int nb);
+t_int_list		*extract_first(t_int_list **head);
+t_int_list		*extract_last(t_int_list **head);
+t_int_list		*extract_nb(t_int_list **head, int nb);
+t_int_list		*ps_join_lsts(t_int_list *a, t_int_list *b);
+void			clear_list(t_int_list **list);
 
 /*
 ** Push Swap functions
@@ -134,89 +136,98 @@ void		clear_list(t_int_list **list);
 ** rrr : rra and rrb at the same time.
 */
 
-t_int_list	*swap_top2(t_int_list *list);
-void		push(t_int_list **dest, t_int_list **src);
-t_int_list	*rotate(t_int_list *list);
-t_int_list	*rev_rotate(t_int_list *list);
-void	do_pb(t_ps *ps);
-void	do_pa(t_ps *ps);
-void	do_sa(t_ps *ps);
-void	do_sb(t_ps *ps);
-void	do_ra(t_ps *ps);
-void	do_rb(t_ps *ps);
-void	do_rra(t_ps *ps);
-void	do_rrb(t_ps *ps);
+t_int_list		*swap_top2(t_int_list *list);
+void			push(t_int_list **dest, t_int_list **src);
+t_int_list		*rotate(t_int_list *list);
+t_int_list		*rev_rotate(t_int_list *list);
+void			do_pb(t_ps *ps);
+void			do_pa(t_ps *ps);
+void			do_sa(t_ps *ps);
+void			do_sb(t_ps *ps);
+void			do_ra(t_ps *ps);
+void			do_rb(t_ps *ps);
+void			do_rra(t_ps *ps);
+void			do_rrb(t_ps *ps);
 
 /*
 ** Commands list and parsing
 */
 
-t_cmd		*create_cmd_node(char *abbr);
-t_cmd		*add_cmd_front(t_cmd *head, t_cmd *node);
-t_cmd		*add_cmd_back(t_cmd *head, t_cmd *node);
-t_cmd		*create_cmd_front(t_cmd *head, char *abbr);
-t_cmd		*create_cmd_back(t_cmd *head, char *abbr);
-void		cmd_to_func(t_int_list **a, t_int_list **b, char *cmd);
-void		cmd_to_func2(t_int_list **a, t_int_list **b, char *cmd);
-void		clear_cmds(t_cmd **cmds);
+t_cmd			*create_cmd_node(char *abbr);
+t_cmd			*add_cmd_front(t_cmd *head, t_cmd *node);
+t_cmd			*add_cmd_back(t_cmd *head, t_cmd *node);
+t_cmd			*create_cmd_front(t_cmd *head, char *abbr);
+t_cmd			*create_cmd_back(t_cmd *head, char *abbr);
+void			cmd_to_func(t_int_list **a, t_int_list **b, char *cmd);
+void			cmd_to_func2(t_int_list **a, t_int_list **b, char *cmd);
+void			clear_cmds(t_cmd **cmds);
+
+/*
+** Quicksort
+*/
+
+t_int_list		*ps_do_quicksort(t_int_list *a);
+void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, int p);
 
 /*
 ** List Printing
 */
 
-void		print_list(t_int_list *list, char *name, char separator);
-void		print_cmd_list(t_cmd *list);
+void			print_list(t_int_list *list, char *name, char separator);
+void			print_cmd_list(t_cmd *list);
 
 /*
 **	Reading list of numbers
 */
 
-void		ps_fetch_numbers(t_ps *ps, int ac, char **av);
-void		ps_readfile(t_ps *ps);
-void		ps_readargs(t_ps *ps, int ac, char **av);
+void			ps_fetch_numbers(t_ps *ps, int ac, char **av);
+void			ps_readfile(t_ps *ps);
+void			ps_readargs(t_ps *ps, int ac, char **av);
 
 /*
 ** Supportive tools
 */
 
-void		error_exit(char *str);
-void		ps_usage_exit(void);
-void		ps_info_exit(void);
-int			is_sort_list(t_int_list *list);
-int			is_rot_sort(t_stk *stack);
-int			find_min(t_int_list *list);
-int			find_max(t_int_list *list);
-int			count_list(t_int_list *list);
-int			get_last(t_int_list *list);
-int			find_nb_pos(t_int_list *list, int nb);
-int			find_slot_rotsort(t_int_list *list, int nb, int max);
-int			count_cmd_list(t_cmd *list);
-void		init_ps(t_ps *ps);
-void		clear_ps(t_ps *ps);
-int			check_valid(t_int_list *list);
-int			find_slot(t_int_list *list, int nb);
-void		ps_flags(t_ps *ps, char *flags);
-char		*ft_getflags_arg(int ac, char **av, char *range);
-void		ps_fetch_flgdata(t_ps *ps, int ac, char **av);
+void			error_exit(char *str);
+void			ps_usage_exit(void);
+void			ps_info_exit(void);
+int				is_sort_list(t_int_list *list);
+int				is_rot_sort(t_stk *stack);
+int				find_min(t_int_list *list);
+int				find_max(t_int_list *list);
+int				get_median(t_int_list *list);
+int				count_list(t_int_list *list);
+int				get_last(t_int_list *list);
+int				find_nb_pos(t_int_list *list, int nb);
+int				find_slot_rotsort(t_int_list *list, int nb, int max);
+int				count_cmd_list(t_cmd *list);
+void			init_ps(t_ps *ps);
+void			clear_ps(t_ps *ps);
+int				check_valid(t_int_list *list);
+int				find_slot(t_int_list *list, int nb);
+void			ps_flags(t_ps *ps, char *flags);
+char			*ft_getflags_arg(int ac, char **av, char *range);
+void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
 
 /*
 ** PUSH_SWAP vfx environment initialization
 */
 
-void		vfx_init(t_ps *ps, t_ps_vfx *vfx);
-void		vfx_init_elems(t_ps_vfx *vfx);
+void			vfx_init(t_ps *ps, t_ps_vfx *vfx);
+void			vfx_init_elems(t_ps_vfx *vfx);
 
 /*
 ** General Push_Swap VFX functions
 */
 
-void		visualise_ps(t_ps *ps);
-int			ps_vfx_key_press(int key, t_ps *ps);
-void		vfx_copy_info(t_ps *ps);
-void		vfx_draw_graph_a(t_ps *ps);
-void		vfx_draw_graph_b(t_ps *ps);
-int			vfx_do_pushswap(t_ps *ps);
-void		vfx_graph_step(t_ps *ps);
-void		vfx_draw_cmds(t_ps *ps);
+void			visualise_ps(t_ps *ps);
+int				ps_vfx_key_press(int key, t_ps *ps);
+int				ps_vfx_key_release(int key, t_ps *ps);
+void			vfx_copy_info(t_ps *ps);
+void			vfx_draw_graph_a(t_ps *ps);
+void			vfx_draw_graph_b(t_ps *ps);
+int				vfx_do_pushswap(t_ps *ps);
+void			vfx_graph_step(t_ps *ps);
+void			vfx_draw_cmds(t_ps *ps);
 
 #endif
