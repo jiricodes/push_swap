@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/18 17:21:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 18:39:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define A_MIN ps->a->min
 # define A_TOP ps->a->lst->nb
 # define A_2ND ps->a->lst->next->nb
+# define A_3RD ps->a->lst->next->next->nb
 # define A_LAST get_last(ps->a->lst)
 # define B_LST ps->b->lst
 # define B_CNT ps->b->count
@@ -112,6 +113,7 @@ t_int_list		*extract_last(t_int_list **head);
 t_int_list		*extract_nb(t_int_list **head, int nb);
 t_int_list		*ps_join_lsts(t_int_list *a, t_int_list *b);
 void			clear_list(t_int_list **list);
+t_int_list		*copy_list(t_int_list *list);
 
 /*
 ** Push Swap functions
@@ -166,8 +168,8 @@ void			clear_cmds(t_cmd **cmds);
 ** Quicksort
 */
 
-t_int_list		*ps_do_quicksort(t_int_list *a);
-void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, int p);
+t_int_list		*ps_do_quicksort(t_int_list *a, t_cmd **cmd, char stk);
+void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, t_cmd **cmd, int p, char stk);
 
 /*
 ** List Printing
@@ -193,13 +195,15 @@ void			ps_usage_exit(void);
 void			ps_info_exit(void);
 int				is_sort_list(t_int_list *list);
 int				is_rot_sort(t_stk *stack);
+int				is_rev_rot_sort(t_stk *stack);
 int				find_min(t_int_list *list);
 int				find_max(t_int_list *list);
 int				get_median(t_int_list *list);
 int				count_list(t_int_list *list);
 int				get_last(t_int_list *list);
 int				find_nb_pos(t_int_list *list, int nb);
-int				find_slot_rotsort(t_int_list *list, int nb, int max);
+int				find_slot_rotsort(t_int_list *list, int nb, int max, int min);
+int				find_slot_rev_rotsort(t_int_list *list, int nb, int max, int min);
 int				count_cmd_list(t_cmd *list);
 void			init_ps(t_ps *ps);
 void			clear_ps(t_ps *ps);
@@ -208,6 +212,8 @@ int				find_slot(t_int_list *list, int nb);
 void			ps_flags(t_ps *ps, char *flags);
 char			*ft_getflags_arg(int ac, char **av, char *range);
 void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
+int				ps_smart_rotate(t_stk *s);
+void			do_smartpush_b(t_ps *ps);
 
 /*
 ** PUSH_SWAP vfx environment initialization
@@ -223,11 +229,12 @@ void			vfx_init_elems(t_ps_vfx *vfx);
 void			visualise_ps(t_ps *ps);
 int				ps_vfx_key_press(int key, t_ps *ps);
 int				ps_vfx_key_release(int key, t_ps *ps);
+int				ps_vfx_exit_press(void);
 void			vfx_copy_info(t_ps *ps);
 void			vfx_draw_graph_a(t_ps *ps);
 void			vfx_draw_graph_b(t_ps *ps);
 int				vfx_do_pushswap(t_ps *ps);
 void			vfx_graph_step(t_ps *ps);
 void			vfx_draw_cmds(t_ps *ps);
-
+void			vfx_reset_graph(t_ps *ps);
 #endif

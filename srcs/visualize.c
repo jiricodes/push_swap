@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/18 15:35:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 17:33:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	visualise_ps(t_ps *ps)
 	vfx_draw_env(ps->vfx);
 	mlx_hook(ps->VFX_W, 2, 0, ps_vfx_key_press, ps);
 	mlx_hook(ps->VFX_W, 3, 0, ps_vfx_key_release, ps);
+	mlx_hook(ps->VFX_W, 17, 0, ps_vfx_exit_press, ps);
 	mlx_loop_hook(ps->VFX_P, vfx_do_pushswap, ps);
 	mlx_loop(ps->VFX_P);
 }
@@ -38,15 +39,9 @@ int		ps_vfx_key_press(int key, t_ps *ps)
 		vfx_graph_step(ps);
 	}
 	else if (key == KEY_ARROW_UP)
-	{
-		if (ps->vfx_gc <= VFX_WHITE - 100)
-			ps->vfx_gc += 100;
-	}
+		ps->vfx_gc = ps->vfx_gc << 1;
 	else if (key == KEY_ARROW_DOWN)
-	{
-		if (ps->vfx_gc >= 100)
-			ps->vfx_gc -= 100;
-	}
+		ps->vfx_gc = ps->vfx_gc >> 1;
 	return (0);
 }
 
@@ -69,7 +64,26 @@ int		ps_vfx_key_release(int key, t_ps *ps)
 		CMD_LN = !CMD_LN ? 1 : 0;
 	else if (key == KEY_SPC)
 		PAUSE = PAUSE ? 0 : 1;
+	else if (key == KEY_R)
+		ps->vfx_gc = VFX_RED;
+	else if (key == KEY_G)
+		ps->vfx_gc = VFX_GREEN;
+	else if (key == KEY_B)
+		ps->vfx_gc = VFX_BLUE;
+	else if (key == KEY_F1)
+		ps->vfx_gc = FLG_C ? ps->flags.color : VFX_ORANGE;
+	else if (key == KEY_F2)
+	{
+		PAUSE = 1;
+		vfx_reset_graph(ps);
+		vfx_graph_step(ps);
+	}
 	else
 		ft_printf("Pressed key_id %d\n", key);
 	return (0);
+}
+
+int		ps_vfx_exit_press(void)
+{
+	exit(0);
 }

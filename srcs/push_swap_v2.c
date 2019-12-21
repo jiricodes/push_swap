@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_quicksrt.c                               :+:      :+:    :+:   */
+/*   push_swap_v2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/19 12:54:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 19:26:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,53 @@
 
 void	push_swap(t_ps *ps)
 {
+	int i;
+	int pos;
+
 	ps_info(ps);
-	print_list(A_LST, "ORG A", ' ');
-	A_LST = ps_do_quicksort(A_LST, &(CMD), 'a');
+	i = 0;
+	pos = 0;
+	while (!is_rot_sort(ps->a) && i < 100)
+	{
+		ft_printf("i = %d: ", i);
+		if (A_CNT > 2 && A_TOP > A_2ND && A_TOP < A_3RD)
+			do_sa(ps);
+		else if (A_TOP > A_2ND && A_TOP != A_MAX)
+			do_smartpush_b(ps);
+		else if (B_LST && B_TOP > A_LAST && B_TOP < A_TOP)
+			do_pa(ps);
+		else
+		{
+			if (ps_smart_rotate(ps->a) == -1)
+				do_rra(ps);
+			else
+				do_ra(ps);
+		}
+		print_list(A_LST, "a @ps", ' ');
+		print_list(B_LST, "b @ps", ' ');
+		i++;
+	}
+	ft_printf("Loop stopped after %d iterations:\n", i);
+	ft_printf("ps: cnt = %d, min = %d, max = %d\n", ps->count, ps->min, ps->max);
+	// pos = is_rot_sort(ps->a);
+	// ft_printf("pos = %d\n", pos);
+	// if (pos <= ps->count / 2)
+	// {
+	// 	while (!is_sort_list(A_LST))
+	// 		do_ra(ps);
+	// }
+	// else
+	// {
+	// 	while (!is_sort_list(A_LST))
+	// 		do_rra(ps);
+	// }
 	print_cmd_list(CMD);
-	print_list(A_LST, "RES A", ' ');
+	if (FLG_T)
+		ft_printf("Total: %d\n", count_cmd_list(CMD));
+	print_list(A_LST, "a @ps end", ' ');
+	print_list(B_LST, "b @ps end", ' ');
+	// if (FLG_V)
+	// 	visualise_ps(ps);
 	clear_ps(ps);
 }
 

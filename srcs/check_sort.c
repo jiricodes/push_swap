@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:34:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 14:59:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 18:35:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,44 @@ int		is_rot_sort(t_stk *stack)
 	}
 	ft_printf("\n");
 	if (tmp->nb > stack->lst->nb)
+		return (0);
+	else
+		return (position);
+}
+
+/*
+** Check whether a list is reverse sorted, but rotated (max after min).
+** Returns the position of max value.
+*/
+
+int		is_rev_rot_sort(t_stk *stack)
+{
+	t_int_list	*tmp;
+	int			position;
+	int			i;
+
+	position = 1;
+	i = 1;
+	tmp = stack->lst;
+	ft_printf("@rev_rot_sort: ");
+	while (tmp && tmp->next)
+	{
+		if (tmp->nb < tmp->next->nb && (tmp->nb != stack->min ||\
+			tmp->next->nb != stack->max))
+		{
+			ft_printf("\n");
+			return (0);
+		}
+		ft_printf("%d > %d | ", tmp->nb, tmp->next->nb);
+		if (tmp->nb == stack->max)
+			position = i;
+		else if (tmp->next->nb == stack->max)
+			position = i + 1;
+		tmp = tmp->next;
+		i++;
+	}
+	ft_printf("\n");
+	if (tmp->nb < stack->lst->nb)
 		return (0);
 	else
 		return (position);

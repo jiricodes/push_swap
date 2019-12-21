@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:53:30 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 16:08:30 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 17:23:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 int	vfx_do_pushswap(t_ps *ps)
 {
 	if (!PAUSE)
+	{
+		vfx_draw_play(ps->vfx);
 		vfx_graph_step(ps);
+	}
+	else
+		vfx_draw_pause(ps->vfx);
 	return (0);
 }
 
@@ -41,7 +46,6 @@ void	vfx_draw_graph_a(t_ps *ps)
 	mlx_put_image_to_window(ps->VFX_P, ps->VFX_W, ps->vfx->graph_bg.img, BORDER, HDR_BG_H);
 	p.x = BORDER;
 	p.y = HDR_BG_H + ps->vfx->graph_bg.height - 1;
-	ft_printf("start of graph: %d x %d\n", p.x, p.y);
 	i = 0;
 	while (tmp)
 	{

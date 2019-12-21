@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:02:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 16:07:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 16:52:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void	vfx_init_elems(t_ps_vfx *vfx)
 	vfx->text_tile.height = 5;
 	vfx->text_tile.color = VFX_BLACK;
 	vfx_create_rectangle_img(VFX_P, &(vfx->text_tile));
+	vfx->cover_tile.width = vfx->text_tile.width;
+	vfx->cover_tile.height = vfx->text_tile.height;
+	vfx->cover_tile.color = vfx->bg_img.color;
+	vfx_create_rectangle_img(VFX_P, &(vfx->cover_tile));
 }
 
 void	vfx_copy_info(t_ps *ps)
@@ -54,8 +58,15 @@ void	vfx_copy_info(t_ps *ps)
 	ps->vfx_a->count = ps->count;
 	ps->vfx_a->min = ps->min;
 	ps->vfx_a->max = ps->max;
-	ps->vfx_a->lst = ps->org;
+	ps->vfx_a->lst = copy_list(ps->org);
 	ps->vfx_b = (t_stk *)malloc(sizeof(t_stk));
 	ft_bzero(ps->vfx_b, sizeof(t_stk));
 	ps->vfx_cmds = ps->cmds;
+}
+
+void	vfx_reset_graph(t_ps *ps)
+{
+	clear_list(&(ps->vfx_a->lst));
+	clear_list(&(ps->vfx_b->lst));
+	vfx_copy_info(ps);
 }

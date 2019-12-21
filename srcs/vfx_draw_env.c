@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:25:08 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 15:37:53 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 16:13:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	vfx_draw_env(t_ps_vfx *vfx)
 	mlx_string_put(VFX_P, VFX_W, 210, WIN_HEIGHT - 20, 0, "(L) LEGEND");
 	mlx_string_put(VFX_P, VFX_W, 410, WIN_HEIGHT - 20, 0, "(SPC) PLAY/PAUSE");
 	mlx_string_put(VFX_P, VFX_W, 610, WIN_HEIGHT - 20, 0, "(->) NEXT CMD");
+	mlx_string_put(VFX_P, VFX_W, 810, WIN_HEIGHT - 20, 0, "(UP/DOWN) COLOR");
+	mlx_string_put(VFX_P, VFX_W, 1010, WIN_HEIGHT - 20, 0, "(R,G,B) RGB");
+	mlx_string_put(VFX_P, VFX_W, 1210, WIN_HEIGHT - 20, 0, "(C) COMMANDS");
+	mlx_string_put(VFX_P, VFX_W, 1410, WIN_HEIGHT - 20, 0, "(F1) RESET COLOR");
+	mlx_string_put(VFX_P, VFX_W, 1610, WIN_HEIGHT - 20, 0, "(F2) RESET GRAPH");
 }
 
 void	vfx_text_img(t_ps_vfx *vfx)

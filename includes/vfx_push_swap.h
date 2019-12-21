@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:53:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 15:51:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/12/21 17:22:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define VFX_P vfx->mlx_p
 # define VFX_W vfx->win_p
 # define VFX_TEXT vfx->text_tile.img
+# define VFX_COVER vfx->cover_tile.img
 # define VFX_TXT_S vfx->text_tile.width
 # define PAUSE ps->vfx->pause
 # define CMD_LN ps->vfx->cmd_line
@@ -66,6 +67,7 @@ typedef struct	s_ps_vfx
 	t_vfx_img	bg_img;
 	t_vfx_img	graph_bg;
 	t_vfx_img	text_tile;
+	t_vfx_img	cover_tile;
 	void		*legend_w;
 	int			cmd_line;
 	int			pause;
@@ -86,6 +88,8 @@ void	vfx_draw_env(t_ps_vfx *vfx);
 void	vfx_text_img(t_ps_vfx *vfx);
 void	vfx_letter_a(t_ps_vfx *vfx, t_point *p);
 void	vfx_letter_b(t_ps_vfx *vfx, t_point *p);
+void	vfx_draw_play(t_ps_vfx *vfx);
+void	vfx_draw_pause(t_ps_vfx *vfx);
 
 /*
 ** Event managememt

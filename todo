@@ -1,3 +1,14 @@
-list functions
-	- remove first
-	- remove last
+push swap alg
+	while A !rot_sort
+	if 1st > 2nd and 1st < last do swap // not sure
+	else if 1st > 2nd and 1st > last  do send to B
+											find spot -> smart rotate -> push 1st A to B
+											so B is always reverse sorted
+	else if 1st < 2nd && 1st > last
+
+Check Sorts
+- TIMSORT
+
+vvaltone
+
+21.12. finish push_swap_v2
