@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:34:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 18:35:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:28:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,34 +47,30 @@ void	is_correct_ps(t_int_list *a, t_int_list *b)
 int		is_rot_sort(t_stk *stack)
 {
 	t_int_list	*tmp;
-	int			position;
 	int			i;
+	int			res;
 
-	position = 1;
 	i = 1;
+	res = i;
 	tmp = stack->lst;
-	ft_printf("@rot_sort: ");
+	if (tmp && tmp->nb != stack->min && tmp->nb < get_last(tmp))
+		return (0);
 	while (tmp && tmp->next)
 	{
-		if (tmp->nb > tmp->next->nb && (tmp->nb != stack->max ||\
-			tmp->next->nb != stack->min))
+		if (tmp->nb > tmp->next->nb)
 		{
-			ft_printf("\n");
+			if (tmp->nb == stack->max && tmp->next->nb == stack->min)
+			{
+				res = i + 1;
+				tmp = tmp->next;
+				continue;
+			}
 			return (0);
 		}
-		ft_printf("%d <= %d | ", tmp->nb, tmp->next->nb);
-		if (tmp->nb == stack->min)
-			position = i;
-		else if (tmp->next->nb == stack->min)
-			position = i + 1;
 		tmp = tmp->next;
 		i++;
 	}
-	ft_printf("\n");
-	if (tmp->nb > stack->lst->nb)
-		return (0);
-	else
-		return (position);
+	return (res);
 }
 
 /*
@@ -85,34 +81,30 @@ int		is_rot_sort(t_stk *stack)
 int		is_rev_rot_sort(t_stk *stack)
 {
 	t_int_list	*tmp;
-	int			position;
 	int			i;
+	int			res;
 
-	position = 1;
 	i = 1;
+	res = i;
 	tmp = stack->lst;
-	ft_printf("@rev_rot_sort: ");
+	if (tmp && tmp->nb != stack->max && tmp->nb > get_last(tmp))
+		return (0);
 	while (tmp && tmp->next)
 	{
-		if (tmp->nb < tmp->next->nb && (tmp->nb != stack->min ||\
-			tmp->next->nb != stack->max))
+		if (tmp->nb < tmp->next->nb)
 		{
-			ft_printf("\n");
+			if (tmp->nb == stack->min && tmp->next->nb == stack->max)
+			{
+				res = i + 1;
+				tmp = tmp->next;
+				continue;
+			}
 			return (0);
 		}
-		ft_printf("%d > %d | ", tmp->nb, tmp->next->nb);
-		if (tmp->nb == stack->max)
-			position = i;
-		else if (tmp->next->nb == stack->max)
-			position = i + 1;
 		tmp = tmp->next;
 		i++;
 	}
-	ft_printf("\n");
-	if (tmp->nb < stack->lst->nb)
-		return (0);
-	else
-		return (position);
+	return (res);
 }
 
 /*

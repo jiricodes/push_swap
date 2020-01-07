@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 18:39:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:43:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
+# define RUN_SIZE 20
 
 typedef struct	s_nblist
 {
@@ -172,6 +173,13 @@ t_int_list		*ps_do_quicksort(t_int_list *a, t_cmd **cmd, char stk);
 void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, t_cmd **cmd, int p, char stk);
 
 /*
+** TimSort (adjusted)
+*/
+
+void			ps_insertsort(t_ps *ps);
+void			ps_merge(t_ps *ps);
+
+/*
 ** List Printing
 */
 
@@ -212,7 +220,7 @@ int				find_slot(t_int_list *list, int nb);
 void			ps_flags(t_ps *ps, char *flags);
 char			*ft_getflags_arg(int ac, char **av, char *range);
 void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
-int				ps_smart_rotate(t_stk *s);
+void			ps_smart_rotate_a(t_ps *ps);
 void			do_smartpush_b(t_ps *ps);
 
 /*

@@ -8,7 +8,14 @@ push swap alg
 
 Check Sorts
 - TIMSORT
-
+	select run size
+	while n < run_size
+		reverse sort insert B
+	then merge sort
 vvaltone
 
-21.12. finish push_swap_v2
+7.1.2020
+working version, needs optimization
+	- merging only sorted into sorted?
+	- rotation to unsorted part optimization (currently only RA)
+	- 

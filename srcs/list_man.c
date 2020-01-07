@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:04:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 19:22:53 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:32:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,7 +262,7 @@ int	find_slot_rotsort(t_int_list *list, int nb, int max, int min)
 	int		i;
 
 	if (nb > max)
-		return (find_nb_pos(list, max));
+		return (find_nb_pos(list, max) + 1);
 	else if (nb < min)
 		return (find_nb_pos(list, min));
 	i = 0;
