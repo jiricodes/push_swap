@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 17:43:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/07 18:05:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
-# define RUN_SIZE 20
+# define RUN_SIZE 32
 
 typedef struct	s_nblist
 {

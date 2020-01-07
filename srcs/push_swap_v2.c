@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 17:37:31 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/07 18:19:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	push_swap(t_ps *ps)
 	print_list(B_LST, "b @ps end", ' ');
 	// if (FLG_V)
 	// 	visualise_ps(ps);
+	// while(1){}
 	clear_ps(ps);
 }
 

@@ -18,4 +18,10 @@ vvaltone
 working version, needs optimization
 	- merging only sorted into sorted?
 	- rotation to unsorted part optimization (currently only RA)
-	- 
+
+Script Test!
+Random gen
+printf '%s ' `seq 1 32 | sort -R`
+
+arg=$(printf '%s ' `seq 1 32 | sort -R`)
+echo arg
