@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/17 12:05:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:01:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 	ps_fetch_numbers(&ps, ac, av);
 	if (!check_valid(ps.a->lst))
 		error_exit("Ivalid list of numbers (contains duplicates)");
+	ft_printf("Data Received\n");
 	push_swap(&ps);
 	// while(1){}
 	return (0);

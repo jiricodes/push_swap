@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 10:06:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 16:38:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
-# define RUN_SIZE 32
+# define RUN_SIZE 64
 
 typedef struct	s_nblist
 {
@@ -177,6 +177,7 @@ void			find_rrb(t_cmd **cmd);
 void			parse_cmds(t_cmd **cmd);
 void			parse_ra(t_cmd **cmd);
 void			parse_rb(t_cmd **cmd);
+void			parse_rotates(t_cmd **cmd);
 void			parse_rra(t_cmd **cmd);
 void			parse_rrb(t_cmd **cmd);
 void			remove_cmd(t_cmd **cmd);

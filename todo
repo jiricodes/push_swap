@@ -15,12 +15,19 @@ Check Sorts
 vvaltone
 
 10.1.
+	need performance optimization (100 nbs by 200+ commands, 500nbs by 5000 commands)
 	flags for checker
 	implement sa && sb?
-
+	fix everything for negative numbers (and protect from outside the range of int)
+	RUN_SIZE into struct?
+		- 500nb
+			- 32 -> ~12k commands
+			- 64 -> ~8.5k commands
 Script Test!
 Random gen
 printf '%s ' `seq 1 32 | sort -R`
 
 arg=$(printf '%s ' `seq 1 32 | sort -R`)
 echo arg
+
+ARG="printf '%s ' `seq 1 501 | sort -R`"; ./ps_test $ARG | wc -l

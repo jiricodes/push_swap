@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 13:53:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 10:50:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:49:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void			ps_insertsort(t_ps *ps, int rotation)
 	{
 		while (i < RUN_SIZE && !is_rot_sort(ps->a))
 		{
+			if (A_TOP == A_MIN)
+				do_ra(ps);
 			do_smartpush_b(ps);
 			i++;
 		}
@@ -36,7 +38,8 @@ void			ps_insertsort(t_ps *ps, int rotation)
 		while (i < RUN_SIZE && !is_rot_sort(ps->a))
 		{
 			do_rra(ps);
-			do_smartpush_b(ps);
+			if (A_TOP != A_MIN)
+				do_smartpush_b(ps);
 			i++;
 		}
 	}
