@@ -1,3 +1,6 @@
 test_file*
 .vscode/
 todo
+tests/
+ps_test
+checker
