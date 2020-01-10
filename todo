@@ -14,12 +14,10 @@ Check Sorts
 	then merge sort
 vvaltone
 
-7.1.2020
-working version, needs optimization
-	- merging only sorted into sorted?
-	- rotation to unsorted part optimization (currently only RA)
-	- pars final cmd list to adjust
-		- sa + sb -> ss etc
+10.1.
+	flags for checker
+	input format (string of numbers as an argument)
+	implement sa && sb?
 
 Script Test!
 Random gen

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/09 16:45:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 09:38:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,22 @@ t_cmd			*create_cmd_back(t_cmd *head, char *abbr);
 void			cmd_to_func(t_int_list **a, t_int_list **b, char *cmd);
 void			cmd_to_func2(t_int_list **a, t_int_list **b, char *cmd);
 void			clear_cmds(t_cmd **cmds);
-void			parse_cmds(t_cmd **cmd);
+
+/*
+** Command list final parsing
+*/
+
 void			free_cmd(t_cmd *node);
+void			find_ra(t_cmd **cmd);
+void			find_rb(t_cmd **cmd);
+void			find_rra(t_cmd **cmd);
+void			find_rrb(t_cmd **cmd);
+void			parse_cmds(t_cmd **cmd);
+void			parse_ra(t_cmd **cmd);
+void			parse_rb(t_cmd **cmd);
+void			parse_rra(t_cmd **cmd);
+void			parse_rrb(t_cmd **cmd);
+void			remove_cmd(t_cmd **cmd);
 
 /*
 ** Quicksort

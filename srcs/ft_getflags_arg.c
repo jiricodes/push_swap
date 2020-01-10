@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:17:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 12:23:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 09:32:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char		*ft_getflags_arg(int ac, char **av, char *range)
 	return (flags);
 }
 
-void	ps_flags(t_ps *ps, char *flags)
+void		ps_flags(t_ps *ps, char *flags)
 {
 	ft_bzero(&(ps->flags), sizeof(t_flag));
 	if (ft_strchr(flags, '?') || ft_strchr(flags, 'u'))
@@ -62,7 +62,7 @@ void	ps_flags(t_ps *ps, char *flags)
 		ps->flags.c = 1;
 }
 
-void	ps_fetch_flgdata(t_ps *ps, int ac, char **av)
+void		ps_fetch_flgdata(t_ps *ps, int ac, char **av)
 {
 	int i;
 

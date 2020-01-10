@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 16:45:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 17:21:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 09:43:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	vfx_draw_play(t_ps_vfx *vfx)
 
 	p.x = WIN_WIDTH / 2 - VFX_TXT_S - VFX_TXT_S / 2;
 	p.y = WIN_HEIGHT - (FOOT_BG_H / 4) * 3;
-
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_TEXT, p.x, p.y);
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_COVER, p.x + VFX_TXT_S, p.y);
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_COVER, p.x + 2 * VFX_TXT_S, p.y);
@@ -69,7 +68,6 @@ void	vfx_draw_pause(t_ps_vfx *vfx)
 
 	p.x = WIN_WIDTH / 2 - VFX_TXT_S - VFX_TXT_S / 2;
 	p.y = WIN_HEIGHT - (FOOT_BG_H / 4) * 3;
-
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_TEXT, p.x, p.y);
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_COVER, p.x + VFX_TXT_S, p.y);
 	mlx_put_image_to_window(VFX_P, VFX_W, VFX_TEXT, p.x + 2 * VFX_TXT_S, p.y);

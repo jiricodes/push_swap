@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 17:33:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 09:43:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,13 @@ int		ps_vfx_key_press(int key, t_ps *ps)
 
 void	vfx_show_legend(void)
 {
-	// vfx->legend_w = mlx_new_window(VFX_P, 200, 1080, "Push_Swap Legend");
 	system("open man/legend.txt");
 }
 
 int		ps_vfx_key_release(int key, t_ps *ps)
 {
 	if (key == 53)
-	{
-		ft_bzero(ps->vfx, sizeof(t_ps_vfx));
 		exit(0);
-	}
 	else if (key == KEY_L)
 		vfx_show_legend();
 	else if (key == KEY_C)
@@ -78,8 +74,6 @@ int		ps_vfx_key_release(int key, t_ps *ps)
 		vfx_reset_graph(ps);
 		vfx_graph_step(ps);
 	}
-	else
-		ft_printf("Pressed key_id %d\n", key);
 	return (0);
 }
 

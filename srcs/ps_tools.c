@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:55:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 17:19:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 09:24:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ void	ps_smart_rotate_a(t_ps *ps)
 	}
 }
 
-// void	insert_extreme_b(ps)
-// {
-	
-// }
-
 void	do_smartpush_b(t_ps *ps)
 {
 	int	p;
@@ -49,17 +44,6 @@ void	do_smartpush_b(t_ps *ps)
 		do_pb(ps);
 		return ;
 	}
-	// if (A_TOP < B_MIN || A_TOP > B_MAX)
-	// {
-	// 	insert_extreme_b(ps);
-	// 	if (!is_rev_rot_sort(ps->b))
-	// 	{
-	// 		ft_printf("{RED}{B}ERROR @smartpush_b after extreme insertion!{EOC}\n");
-	// 		print_list(B_LST, "b not_revrotsort", ' ');
-	// 		exit(0);
-	// 	}
-	// 	return ;
-	// }
 	p = find_slot_rev_rotsort(B_LST, A_TOP, B_MAX, B_MIN);
 	if (p < B_CNT / 2)
 	{

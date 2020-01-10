@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/09 16:11:46 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/10 09:58:17 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,26 @@ LIB = ../printf/libftprintf.a
 FTS =	check_sort.c \
 		clear_list.c \
 		cmd_man.c \
+		cmd_man2.c \
 		cmd_parse.c \
+		cmd_parse2.c \
 		cmp_control.c \
 		error_exit.c \
 		ft_getflags_arg.c \
 		list_man.c \
+		list_man2.c \
+		list_man3.c \
+		list_man4.c \
 		list_print.c \
-		ps_quicksort.c \
 		ps_tools.c \
 		push_swap_insertsort.c \
 		push_swap_ops.c \
-		push_swap_v2.c \
+		push_swap.c \
 		read_numbers.c \
 		visualize.c \
 		vfx_draw_env.c \
 		vfx_draw_graph.c \
+		vfx_draw_graph2.c \
 		vfx_draw_playback.c \
 		vfx_draw_text.c \
 		vfx_engine.c \
