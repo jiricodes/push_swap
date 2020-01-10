@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/10 10:23:33 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/10 10:48:49 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ FTS =	check_sort.c \
 		list_print.c \
 		ps_tools.c \
 		push_swap_insertsort.c \
+		push_swap_merge.c \
 		push_swap_ops.c \
 		push_swap.c \
 		read_numbers.c \

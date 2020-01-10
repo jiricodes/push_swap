@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:53:30 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:55:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 11:07:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ void	vfx_draw_graph_a(t_ps *ps)
 	mlx_put_image_to_window(ps->VFX_P, ps->VFX_W, ps->vfx->graph_bg.img,\
 		BORDER, HDR_BG_H);
 	p.x = BORDER;
-	p.y = HDR_BG_H + ps->vfx->graph_bg.height - 1;
+	p.y = HDR_BG_H + ps->vfx->graph_bg.height - 1\
+		- ps->vfx->lines * count_list(tmp);
 	i = 0;
 	while (tmp)
 	{
 		j = -1;
 		while (++j < tmp->nb * ps->vfx->rat)
-			mlx_pixel_put(ps->VFX_P, ps->VFX_W, p.x + j, p.y - i, ps->vfx_gc);
+			mlx_pixel_put(ps->VFX_P, ps->VFX_W, p.x + j, p.y + i, ps->vfx_gc);
 		if (i % ps->vfx->lines == 0 && i != 0)
 			tmp = tmp->next;
 		i++;
@@ -70,13 +71,14 @@ void	vfx_draw_graph_b(t_ps *ps)
 	mlx_put_image_to_window(ps->VFX_P, ps->VFX_W, ps->vfx->graph_bg.img,\
 		BORDER + ps->vfx->graph_bg.width + 2, HDR_BG_H);
 	p.x = BORDER + ps->vfx->graph_bg.width + 2;
-	p.y = HDR_BG_H + ps->vfx->graph_bg.height - 1;
+	p.y = HDR_BG_H + ps->vfx->graph_bg.height - 1\
+		- ps->vfx->lines * count_list(tmp);
 	i = 0;
 	while (tmp)
 	{
 		j = -1;
 		while (++j < tmp->nb * ps->vfx->rat)
-			mlx_pixel_put(ps->VFX_P, ps->VFX_W, p.x + j, p.y - i, ps->vfx_gc);
+			mlx_pixel_put(ps->VFX_P, ps->VFX_W, p.x + j, p.y + i, ps->vfx_gc);
 		if (i % ps->vfx->lines == 0 && i != 0)
 			tmp = tmp->next;
 		i++;
