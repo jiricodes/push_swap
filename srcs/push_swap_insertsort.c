@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 13:53:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 12:49:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:28:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void			ps_insertsort(t_ps *ps, int rotation)
 	ps_info(ps);
 	if (rotation > 0)
 	{
-		while (i < RUN_SIZE && !is_rot_sort(ps->a))
+		ft_printf("Insertsort(ra) %d run\n", rotation);
+		while (i < rotation && !is_rot_sort(ps->a))
 		{
 			if (A_TOP == A_MIN)
 				do_ra(ps);
@@ -35,7 +36,8 @@ void			ps_insertsort(t_ps *ps, int rotation)
 	}
 	else
 	{
-		while (i < RUN_SIZE && !is_rot_sort(ps->a))
+		ft_printf("Insertsort(rra) %d run\n", rotation);
+		while (i < (-1 * rotation) && !is_rot_sort(ps->a))
 		{
 			do_rra(ps);
 			if (A_TOP != A_MIN)
@@ -55,20 +57,24 @@ void			ps_insertsort(t_ps *ps, int rotation)
 int				find_unsorted(t_ps *ps)
 {
 	int i;
+	int rot;
 
 	i = find_unsort_index(ps);
+	rot = A_CNT < RUN_SIZE * 2 ? RUN_SIZE / 2 : RUN_SIZE;
+	rot = A_CNT < RUN_SIZE ? RUN_SIZE / 8 : RUN_SIZE;
+	ft_printf("unsort i = %d |", i);
 	if (is_rot_sort(ps->a))
 		return (0);
-	else if (i == 0)
-		return (1);
-	else if (i < RUN_SIZE && RUN_SIZE < A_CNT)
-		return (1);
-	else if (i > RUN_SIZE)
-		return (A_CNT - i < RUN_SIZE ? -1 * (A_CNT - i) : -1 * RUN_SIZE);
-	else if (i < A_CNT / 2)
-		return (1);
+	else if (i == 0 && A_LAST != A_MIN)
+		return (rot);
+	// else if (i == 0 && A_LAST == A_MIN)
+	// 	return (-1 * (RUN_SIZE + 1));
+	else if (i < (rot - rot / 8))
+		return (rot);
+	// else if (i > RUN_SIZE)
+	// 	return (A_CNT - i < RUN_SIZE ? -1 * (A_CNT - i) : -1 * RUN_SIZE);
 	else
-		return (-1 * RUN_SIZE);
+		return (-1 * rot);
 }
 
 int				find_unsort_index(t_ps *ps)
@@ -112,6 +118,7 @@ int				ps_pars_rotate(t_ps *ps)
 	int		brk;
 
 	brk = find_unsorted(ps);
+	ft_printf(" %d\n", brk);
 	if (brk <= 0)
 		return (brk);
 	else
@@ -128,6 +135,6 @@ int				ps_pars_rotate(t_ps *ps)
 			return (0);
 		}
 		else
-			return (1);
+			return (brk);
 	}
 }

@@ -17,7 +17,7 @@ vvaltone
 10.1.
 	need performance optimization (100 nbs by 200+ commands, 500nbs by 5000 commands)
 	flags for checker
-	implement sa && sb?
+	implement sa && sb? (796. 806)
 	fix everything for negative numbers (and protect from outside the range of int)
 	RUN_SIZE into struct?
 		- 500nb

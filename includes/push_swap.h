@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 16:38:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:48:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
-# define RUN_SIZE 64
+# define RUN_SIZE 32
 
 typedef struct	s_nblist
 {
@@ -236,6 +236,7 @@ char			*ft_getflags_arg(int ac, char **av, char *range);
 void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
 void			ps_smart_rotate_a(t_ps *ps);
 void			do_smartpush_b(t_ps *ps);
+void			do_smartpush_b_nc(t_ps *ps);
 
 /*
 ** PUSH_SWAP vfx environment initialization
