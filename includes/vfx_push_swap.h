@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:53:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 14:54:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:04:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,23 +78,23 @@ typedef struct	s_ps_vfx
 ** Image generators
 */
 
-void	vfx_create_rectangle_img(void *mlx_ptr, t_vfx_img *elem);
+void			vfx_create_rectangle_img(void *mlx_ptr, t_vfx_img *elem);
 
 /*
 ** Drawing & Image placing functions
 */
 
-void	vfx_draw_env(t_ps_vfx *vfx);
-void	vfx_text_img(t_ps_vfx *vfx);
-void	vfx_letter_a(t_ps_vfx *vfx, t_point *p);
-void	vfx_letter_b(t_ps_vfx *vfx, t_point *p);
-void	vfx_draw_play(t_ps_vfx *vfx);
-void	vfx_draw_pause(t_ps_vfx *vfx);
+void			vfx_draw_env(t_ps_vfx *vfx);
+void			vfx_text_img(t_ps_vfx *vfx);
+void			vfx_letter_a(t_ps_vfx *vfx, t_point *p);
+void			vfx_letter_b(t_ps_vfx *vfx, t_point *p);
+void			vfx_draw_play(t_ps_vfx *vfx);
+void			vfx_draw_pause(t_ps_vfx *vfx);
 
 /*
 ** Event managememt
 */
 
-void	vfx_show_legend(void);
+void			vfx_show_legend(void);
 
 #endif

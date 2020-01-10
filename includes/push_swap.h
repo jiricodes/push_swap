@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:38:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:06:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct	s_flags
 	int		color;
 }				t_flg;
 
-typedef struct s_push_swap
+typedef struct	s_push_swap
 {
 	int			count;
 	int			min;
@@ -182,13 +182,6 @@ void			parse_rrb(t_cmd **cmd);
 void			remove_cmd(t_cmd **cmd);
 
 /*
-** Quicksort
-*/
-
-t_int_list		*ps_do_quicksort(t_int_list *a, t_cmd **cmd, char stk);
-void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, t_cmd **cmd, int p, char stk);
-
-/*
 ** TimSort (adjusted)
 */
 
@@ -230,7 +223,8 @@ int				count_list(t_int_list *list);
 int				get_last(t_int_list *list);
 int				find_nb_pos(t_int_list *list, int nb);
 int				find_slot_rotsort(t_int_list *list, int nb, int max, int min);
-int				find_slot_rev_rotsort(t_int_list *list, int nb, int max, int min);
+int				find_slot_rev_rotsort(t_int_list *list,\
+					int nb, int max, int min);
 int				count_cmd_list(t_cmd *list);
 void			init_ps(t_ps *ps);
 void			clear_ps(t_ps *ps);
