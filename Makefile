@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/10 09:58:17 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/10 10:23:33 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FTS =	check_sort.c \
 		cmd_parse.c \
 		cmd_parse2.c \
 		cmp_control.c \
-		error_exit.c \
+		exit.c \
 		ft_getflags_arg.c \
 		list_man.c \
 		list_man2.c \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/16 11:23:11 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:36:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,27 @@ void	ps_usage_exit(void)
 	ft_printf("Available flags:\n");
 	ft_printf("-v\t\tEnables visualisation\n");
 	ft_printf("-f [FILENAME]\tReads data from the file\n");
-	ft_printf("-s [SECONDS]\tEnables delay in visualizer\n");
 	ft_printf("-t\t\tShows total number of steps\n");
 	ft_printf("-c [INT_COLOR]\tChanges visualiser color\n");
 	ft_printf("-u\t\tShows usage\n");
 	ft_printf("-i\t\tShows program informations. If selected, normal\n");
 	ft_printf("\t\tprogram functionality is disabled!\n");
-	exit(-1);
+	exit(0);
 }
 
 void	ps_info_exit(void)
 {
 	ft_printf("\n{GREEN}{U}Push_Swap Project{EOC}\n");
-	ft_printf("Created by:\n\tjnovotny\n\tat HIVE Helsinki\n\t12/2019\n");
-	ft_printf("\nMore info to be added.\n");
-	exit(-1);
+	ft_printf("Created by:\n\tjnovotny\n\tat HIVE Helsinki\n\t01/2020\n");
+	ft_printf("\nThe project aims to sort given array of numbers\n");
+	ft_printf("using two stacks (A and B) and only following:\n\n");
+	system("cat man/legend.txt");
+	ft_printf("\n\nThe binary {BLUE}{B}push_swap{EOC} should return");
+	ft_printf(" a list of operations\n");
+	ft_printf("which if performed on given array of numbers\n");
+	ft_printf("should make it sorted.\n");
+	ft_printf("\nThe binary {BLUE}{B}checker{EOC} performs given commands\n");
+	ft_printf("on given array. And returns message whether\n");
+	ft_printf("the final stack is sorted or not.\n\n");
+	exit(0);
 }
