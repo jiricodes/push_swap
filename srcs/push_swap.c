@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 12:37:31 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:22:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	push_swap(t_ps *ps)
 		rot = ps_pars_rotate(ps);
 		if (rot == 0)
 		{
-			ft_printf("ROT 0\n");
+			// ft_printf("ROT 0\n");
 			continue ;
 		}
 		ps_insertsort(ps, rot);
@@ -41,8 +41,8 @@ void	push_swap(t_ps *ps)
 	print_cmd_list(CMD);
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
-	print_list(A_LST, "a @ps end", ' ');
-	print_list(B_LST, "b @ps end", ' ');
+	// print_list(A_LST, "a @ps end", ' ');
+	// print_list(B_LST, "b @ps end", ' ');
 	if (FLG_V)
 		visualise_ps(ps);
 	// while(1){}

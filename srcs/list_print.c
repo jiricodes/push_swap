@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:40:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 18:07:28 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:24:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,10 @@ void	print_list(t_int_list *list, char *name, char separator)
 
 void	print_cmd_list(t_cmd *list)
 {
-	if (!list)
-		ft_printf("\n");
-	else
-		while (list)
-		{
-			ft_printf("%s\n", list->abbr);
-			list = list->next;
-		}
+	while (list)
+	{
+		ft_printf("%s\n", list->abbr);
+		list = list->next;
+	}
 	return ;
 }
