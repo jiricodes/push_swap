@@ -1,5 +1,6 @@
 test_file*
 .vscode/
+.DS_Store
 tests/
 ps_test
 checker
