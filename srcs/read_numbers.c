@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:59:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:18:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	ps_readfile(t_ps *ps)
 		i = 0;
 		while (str[i])
 		{
-			while (isspace(str[i]))
+			while (ft_isspace(str[i]))
 				i++;
-			if (!isdigit(str[i]))
+			if (str[i] == '\0')
+				break ;
+			if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
 				error_exit("File contains invalid characters");
 			A_LST = create_back(A_LST, ft_atoi(&str[i]));
 			ps->org = create_back(ps->org, ft_atoi(&str[i]));

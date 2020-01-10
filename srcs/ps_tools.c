@@ -6,11 +6,15 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:55:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:24:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:15:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** Final rotation of sorted list into proper position (min at the top)
+*/
 
 void	ps_smart_rotate_a(t_ps *ps)
 {
@@ -34,6 +38,10 @@ void	ps_smart_rotate_a(t_ps *ps)
 		}
 	}
 }
+
+/*
+** Does PB in such fashion that stack B is always sorted
+*/
 
 void	do_smartpush_b(t_ps *ps)
 {

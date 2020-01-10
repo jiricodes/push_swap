@@ -18,6 +18,7 @@ vvaltone
 	flags for checker
 	input format (string of numbers as an argument)
 	implement sa && sb?
+	reverse visualiser (accurate stack)
 
 Script Test!
 Random gen

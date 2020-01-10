@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 13:53:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/09 14:06:19 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:13:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 
 void	ps_insertsort(t_ps *ps, int rotation)
 {
-	/*
-	** check slot -> ra or rb
-	** what if rr or rrr and pb is faster?
-	** try to check for sa then pb rather than smart pb
-	*/
 	int i;
 
 	i = 0;
