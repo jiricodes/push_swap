@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 18:05:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/09 16:45:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ t_cmd			*create_cmd_back(t_cmd *head, char *abbr);
 void			cmd_to_func(t_int_list **a, t_int_list **b, char *cmd);
 void			cmd_to_func2(t_int_list **a, t_int_list **b, char *cmd);
 void			clear_cmds(t_cmd **cmds);
+void			parse_cmds(t_cmd **cmd);
+void			free_cmd(t_cmd *node);
 
 /*
 ** Quicksort
@@ -176,8 +178,11 @@ void			ps_qsrt_swapper(t_int_list **a, t_int_list **b, t_cmd **cmd, int p, char 
 ** TimSort (adjusted)
 */
 
-void			ps_insertsort(t_ps *ps);
+void			ps_insertsort(t_ps *ps, int rotation);
 void			ps_merge(t_ps *ps);
+int				find_unsorted(t_ps *ps);
+int				find_unsort_index(t_ps *ps);
+int				ps_pars_rotate(t_ps *ps);
 
 /*
 ** List Printing

@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/07 15:09:49 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/09 16:11:46 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIB = ../printf/libftprintf.a
 FTS =	check_sort.c \
 		clear_list.c \
 		cmd_man.c \
+		cmd_parse.c \
 		cmp_control.c \
 		error_exit.c \
 		ft_getflags_arg.c \

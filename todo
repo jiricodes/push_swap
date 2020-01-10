@@ -18,6 +18,8 @@ vvaltone
 working version, needs optimization
 	- merging only sorted into sorted?
 	- rotation to unsorted part optimization (currently only RA)
+	- pars final cmd list to adjust
+		- sa + sb -> ss etc
 
 Script Test!
 Random gen

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:41:20 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/14 10:16:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/09 16:45:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,14 @@ t_cmd	*create_cmd_back(t_cmd *head, char *abbr)
 
 	node = create_cmd_node(abbr);
 	return (add_cmd_back(head, node));
+}
+
+/*
+**	Free CMD
+*/
+
+void	free_cmd(t_cmd *node)
+{
+	free(node->abbr);
+	free(node);
 }

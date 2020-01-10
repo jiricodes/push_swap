@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 18:19:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/09 17:18:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,24 @@
 void	push_swap(t_ps *ps)
 {
 	int i;
-	int pos;
+	int rot;
 
 	ps_info(ps);
 	i = 0;
-	pos = 0;
 	while (!is_rot_sort(ps->a))
 	{
 		if (A_CNT > 2 && A_TOP > A_2ND && A_TOP < A_3RD)
 		{
 			do_sa(ps);
-			// print_list(A_LST, "a @ps after sa", ' ');
-			// print_list(B_LST, "b @ps after sa", ' ');
 			continue;
 		}
-		else if (A_TOP < A_2ND)
+		rot = ps_pars_rotate(ps);
+		if (rot == 0)
 		{
-			do_ra(ps);
-			// print_list(A_LST, "a @ps after ra", ' ');
-			// print_list(B_LST, "b @ps after ra", ' ');
-			continue;
+			ft_printf("ROT 0\n");
+			continue ;
 		}
-		ps_insertsort(ps);
+		ps_insertsort(ps, rot);
 		// print_list(A_LST, "a @ps after insert", ' ');
 		// print_list(B_LST, "b @ps after insert", ' ');
 		ps_merge(ps);
@@ -44,13 +40,14 @@ void	push_swap(t_ps *ps)
 		// print_list(B_LST, "b @ps after merge", ' ');
 	}
 	ps_smart_rotate_a(ps);
+	parse_cmds(&(CMD));
 	print_cmd_list(CMD);
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
 	print_list(A_LST, "a @ps end", ' ');
 	print_list(B_LST, "b @ps end", ' ');
-	// if (FLG_V)
-	// 	visualise_ps(ps);
+	if (FLG_V)
+		visualise_ps(ps);
 	// while(1){}
 	clear_ps(ps);
 }
