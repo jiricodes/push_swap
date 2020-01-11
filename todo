@@ -26,6 +26,9 @@ vvaltone
 	fix one number only arrays
 	fix 5 numbers operations (must be under 12)
 		e.g. 1 5 2 4 3 takes 17 commands
+	read_numbers -> change isdigit to ft_isdigit
+	main -> int i is redundant
+	push_swap.c int i is also redundant
 Script Test!
 Random gen
 printf '%s ' `seq 1 32 | sort -R`
