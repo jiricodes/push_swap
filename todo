@@ -27,6 +27,7 @@ vvaltone
 	fix one number only arrays
 	fix 5 numbers operations (must be under 12)
 		e.g. 1 5 2 4 3 takes 17 commands
+<<<<<<< HEAD
 
 13.1.
 	python version of quicksort is somehow working
@@ -34,6 +35,11 @@ vvaltone
 				900				  100
 			   5625				  500
 			
+=======
+	read_numbers -> change isdigit to ft_isdigit
+	main -> int i is redundant
+	push_swap.c int i is also redundant
+>>>>>>> 925235eb83d078eddd5e6571bff1857d62c8fbd7
 Script Test!
 Random gen
 printf '%s ' `seq 1 32 | sort -R`
