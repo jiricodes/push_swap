@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 12:16:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/13 12:19:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 09:57:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,4 @@
 ** Creates int array out of t_int_list
 */
 
-int **list_to_array()
+//int **list_to_array()

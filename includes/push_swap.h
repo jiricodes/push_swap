@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 18:48:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:05:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
 # define RUN_SIZE 32
+# define TRUE 1
+# define FALSE 0
 
 typedef struct	s_nblist
 {
@@ -191,6 +193,19 @@ void			ps_merge(t_ps *ps);
 int				find_unsorted(t_ps *ps);
 int				find_unsort_index(t_ps *ps);
 int				ps_pars_rotate(t_ps *ps);
+
+/*
+** Iterative quicksort
+*/
+
+int				qs_runlenght(t_int_list *list, int left, int right);
+int				qs_nextrun(t_int_list **runs);
+int				qs_contains(t_int_list *list, int left, int right);
+int				qs_split_range(t_ps *ps, int left, int right, int len);
+int				qs_merge(t_ps *ps, t_int_list **runs);
+void			qs_insertsort(t_ps *ps);
+void			qs_rot_a(t_ps *ps, int i);
+int				qs_get_median_range(t_int_list *list, int n);
 
 /*
 ** List Printing

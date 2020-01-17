@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 17:10:19 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 10:09:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	int			i;
 	t_ps		ps;
 	char		*flgs;
 
-	i = 0;
 	init_ps(&ps);
 	flgs = ft_getflags_arg(ac, av, FLG_STR);
 	ps_flags(&ps, flgs);

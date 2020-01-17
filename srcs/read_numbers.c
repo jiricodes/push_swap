@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 10:45:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 10:09:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void		ps_readargs(t_ps *ps, int ac, char **av)
 	int i;
 
 	i = ac - 1;
-	while (i > 0 && (isdigit(av[i][0]) ||\
-		(av[i][0] == '-' && isdigit(av[i][1]))))
+	while (i > 0 && (ft_isdigit(av[i][0]) ||\
+		(av[i][0] == '-' && ft_isdigit(av[i][1]))))
 		i--;
 	if (ft_strstr(av[i], "-s") || ft_strstr(av[i], "-c"))
 		i++;

@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/10 12:59:29 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/17 11:51:30 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,12 @@ FTS =	check_sort.c \
 		list_man3.c \
 		list_man4.c \
 		list_print.c \
+		ps_iterquicksort.c \
 		ps_tools.c \
 		push_swap_insertsort.c \
 		push_swap_merge.c \
 		push_swap_ops.c \
-		push_swap.c \
+		push_swap_iterquicksort.c \
 		read_numbers.c \
 		visualize.c \
 		vfx_draw_env.c \

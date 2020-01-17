@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:04:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:50:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 10:08:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,31 @@
 
 /*
 **	Finds median value of the list
+**	Find median High
+**	Find and remove min, find and remove max, until len(1)
 */
 
 int			get_median(t_int_list *list)
 {
-	int		cnt;
-	int		tot;
+	t_int_list	*tmp;
+	int			nb;
+	t_int_list	*node;
 
-	cnt = 0;
-	tot = 0;
-	while (list)
+	tmp = copy_list(list);
+	while (count_list(tmp) > 1)
 	{
-		cnt++;
-		tot += list->nb;
-		list = list->next;
+		nb = find_min(tmp);
+		node = extract_nb(&tmp, nb);
+		clear_list(&node);
+		if (count_list(tmp) == 1)
+			break ;
+		nb = find_max(tmp);
+		node = extract_nb(&tmp, nb);
+		clear_list(&node);
 	}
-	return (tot / cnt);
+	nb = tmp->nb;
+	clear_list(&tmp);
+	return (nb);
 }
 
 /*

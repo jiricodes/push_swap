@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:02:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/21 16:52:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 11:57:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	vfx_init_elems(t_ps_vfx *vfx)
 void	vfx_copy_info(t_ps *ps)
 {
 	ps->vfx_a = (t_stk *)malloc(sizeof(t_stk));
-	ps->vfx_a->count = ps->count;
-	ps->vfx_a->min = ps->min;
-	ps->vfx_a->max = ps->max;
+	ps->vfx_a->count = count_list(ps->org);
+	ps->vfx_a->min = find_min(ps->org);
+	ps->vfx_a->max = find_max(ps->org);
 	ps->vfx_a->lst = copy_list(ps->org);
 	ps->vfx_b = (t_stk *)malloc(sizeof(t_stk));
 	ft_bzero(ps->vfx_b, sizeof(t_stk));

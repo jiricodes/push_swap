@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 18:39:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/17 10:09:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	push_swap(t_ps *ps)
 {
-	int i;
 	int rot;
 
 	ps_info(ps);
-	i = 1;
 	while (!is_rot_sort(ps->a))
 	{
 		if (A_CNT > 2 && A_TOP > A_2ND && A_TOP < A_3RD)
