@@ -67,7 +67,7 @@ SRCS = $(addprefix $(S_DIR), $(FTS))
 PS_M = ./srcs/main_pushswap.c
 CH_M = ./srcs/main_checker.c
 
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra
 
 GRAPHIC = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
