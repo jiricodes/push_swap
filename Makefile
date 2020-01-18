@@ -112,7 +112,7 @@ $(CHECK):
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 linux:
-	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_LIB) $(L_SRCS) $(PS_M)
+	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(L_LIB)
 	@echo "$(C_GREEN)[$(C_BLUE)linux version$(C_GREEN) was compiled (no graphic)]$(C_RES)"
 
 clean:
