@@ -21,7 +21,7 @@ void	ps_smart_rotate_a(t_ps *ps)
 	int			i;
 
 	i = find_nb_pos(A_LST, A_MIN);
-	if (i < A_CNT / 2)
+	if (i <= A_CNT / 2)
 	{
 		while (i > 0)
 		{
