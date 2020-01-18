@@ -75,6 +75,22 @@ void	push_swap(t_ps *ps)
 			//check if sa
 			//check if oneoff
 				runs = create_front(runs, qs_split_range(ps, left, right, to_run));
+				if (is_rot_sort(ps->a))
+				{
+					while (B_LST)
+					{
+						// this needs a optimization
+						ft_printf("B_MAX %d | SLOT i %d\n", B_MAX, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
+						print_list(A_LST, "A", ' ');
+						print_list(B_LST, "B", ' ');
+						print_cmd_list(CMD);
+						qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
+						ps_merge_rotate_b(ps, find_nb_pos(B_LST, B_MAX));
+						do_pa(ps);
+						ps_info(ps);
+					}
+					break;
+				}
 				left = qs_merge(ps, &runs);
 			}
 		}

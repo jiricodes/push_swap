@@ -206,6 +206,7 @@ int				qs_merge(t_ps *ps, t_int_list **runs);
 void			qs_insertsort(t_ps *ps);
 void			qs_rot_a(t_ps *ps, int i);
 int				qs_get_median_range(t_int_list *list, int n);
+void			ps_merge_rotate_b(t_ps *ps, int pos);
 
 /*
 ** List Printing
