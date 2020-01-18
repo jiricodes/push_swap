@@ -22,6 +22,7 @@ NAME = ps_test
 CHECK = checker
 
 LIB = ../printf/libftprintf.a
+L_LIB = ../printf/libft.a
 
 FTS =	check_sort.c \
 		clear_list.c \
@@ -107,7 +108,7 @@ $(NAME):
 	@echo "$(C_GREEN)[$(C_BLUE)$(NAME)$(C_GREEN) was compiled]$(C_RES)"
 
 $(CHECK):
-	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(CH_M) $(GRAPHIC)
+	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_LIB) $(SRCS) $(CH_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 linux:
