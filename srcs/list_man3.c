@@ -77,7 +77,7 @@ int	find_slot_rotsort(t_int_list *list, int nb, int max, int min)
 		return (find_nb_pos(list, max) + 1);
 	else if (nb < min)
 		return (find_nb_pos(list, min));
-	i = 0;
+	i = 1;
 	while (list && list->next)
 	{
 		if (nb > list->nb && nb < list->next->nb)
@@ -85,7 +85,7 @@ int	find_slot_rotsort(t_int_list *list, int nb, int max, int min)
 		list = list->next;
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 /*

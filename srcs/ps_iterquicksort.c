@@ -97,7 +97,7 @@ int		qs_merge(t_ps *ps, t_int_list **runs)
 			while (B_LST)
 			{
 				// this needs a optimization
-				qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN) + 1);
+				qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
 				ps_merge_rotate_b(ps, find_nb_pos(B_LST, B_MAX));
 				do_pa(ps);
 				ps_info(ps);
