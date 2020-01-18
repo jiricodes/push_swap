@@ -67,6 +67,8 @@ int		qs_merge(t_ps *ps, t_int_list **runs)
 	}
 	ps_info(ps);
 	left = B_MAX;
+	if (is_rot_sort(ps->a))
+		qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
 	do_pa(ps);
 	while (B_LST)
 	{
