@@ -23,6 +23,11 @@ int		qs_split_range(t_ps *ps, int left, int right, int len)
 	// include check for oneoff and sa
 	while (qs_contains(A_LST, left, right))
 	{
+		if (count_list(A_LST) == 3)
+		{
+			ps_sort_top3a(ps);
+			break;
+		}
 		if (left < A_TOP && A_TOP <= right)
 			do_pb(ps);
 		else
