@@ -41,31 +41,6 @@ static void	ps_merge_rotate_a(t_ps *ps, int slot)
 	}
 }
 
-static void	ps_merge_rotate_b(t_ps *ps, int pos)
-{
-	int i;
-	if (B_CNT == 1)
-		return ;
-	if (pos <= B_CNT / 2)
-	{
-		i = 0;
-		while (i < pos)
-		{
-			do_rb(ps);
-			i++;
-		}
-	}
-	else
-	{
-		i = B_CNT;
-		while (i > pos)
-		{
-			do_rrb(ps);
-			i--;
-		}
-	}
-}
-
 int			find_merge_slot(t_ps *ps)
 {
 	int			i;
