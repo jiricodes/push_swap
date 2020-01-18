@@ -43,7 +43,9 @@ static void	ps_merge_rotate_b(t_ps *ps, int pos)
 {
 	int i;
 
-	if (pos < B_CNT / 2)
+	if (B_CNT == 1)
+		return ;
+	if (pos <= B_CNT / 2)
 	{
 		i = 0;
 		while (i < pos)
