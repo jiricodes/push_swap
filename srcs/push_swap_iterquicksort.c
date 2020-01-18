@@ -66,7 +66,7 @@ void	push_swap(t_ps *ps)
 		else
 		{
 			//check if already sorted
-			if ps_check_sort_n(A_LST, to_run)
+			if (ps_check_sort_n(A_LST, to_run))
 				left = ps_get_i_val(A_LST, to_run - 1)
 			else
 			{
