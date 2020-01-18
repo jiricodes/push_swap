@@ -54,6 +54,29 @@ FTS =	check_sort.c \
 		vfx_engine.c \
 		vfx_environment.c
 
+L_FTS =	check_sort.c \
+		clear_list.c \
+		cmd_man.c \
+		cmd_man2.c \
+		cmd_parse.c \
+		cmd_parse2.c \
+		cmd_parse3.c \
+		cmp_control.c \
+		exit.c \
+		ft_getflags_arg.c \
+		list_man.c \
+		list_man2.c \
+		list_man3.c \
+		list_man4.c \
+		list_print.c \
+		ps_iterquicksort.c \
+		ps_tools.c \
+		push_swap_insertsort.c \
+		push_swap_merge.c \
+		push_swap_ops.c \
+		push_swap_iterquicksort.c \
+		read_numbers.c
+
 FTO = $(FTS.c=.o)
 
 LIB_I = ../printf/includes/
@@ -63,6 +86,7 @@ S_DIR = ./srcs/
 O_DIR = ./objs/
 
 SRCS = $(addprefix $(S_DIR), $(FTS))
+L_SRCS = $(addprefix $(S_DIR), $(L_FTS))
 
 PS_M = ./srcs/main_pushswap.c
 CH_M = ./srcs/main_checker.c
@@ -85,6 +109,10 @@ $(NAME):
 $(CHECK):
 	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(CH_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
+
+linux:
+	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(L_SRCS) $(PS_M)
+	@echo "$(C_GREEN)[$(C_BLUE)linux version$(C_GREEN) was compiled (no graphic)]$(C_RES)"
 
 clean:
 	# @make clean -C ./library

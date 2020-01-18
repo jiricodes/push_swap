@@ -99,8 +99,8 @@ void	push_swap(t_ps *ps)
 	print_cmd_list(CMD);
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
-	if (FLG_V)
-		visualise_ps(ps);
+	// if (FLG_V)
+	// 	visualise_ps(ps);
 	clear_ps(ps);
 }
 
