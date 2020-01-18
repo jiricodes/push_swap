@@ -193,3 +193,30 @@ int		qs_get_median_range(t_int_list *list, int n)
 	clear_list(&tmp);
 	return (res);
 }
+
+/*
+** Checks if next N numbers of the list are sorted
+*/
+
+int		ps_check_sort_n(t_int_list *list, int len)
+{
+	while (list && len > 1)
+	{
+		if (list->next && list->nb > list->next->nb)
+			return (FALSE);
+		list = list->next;
+		len--;
+	}
+	return (TRUE)
+}
+
+/*
+** Returns [i] number of the list
+*/
+
+int		ps_get_i_val(t_int_list *list, int i)
+{
+	while (i-- > 0)
+		list = list->next;
+	return list->nb;
+}

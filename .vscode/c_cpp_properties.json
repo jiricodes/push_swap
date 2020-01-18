@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
 				"/Users/jnovotny/Documents/Hive_Phase_1/algorithm_branch/printf/includes",
-				"/usr/local/include/"
+				"/usr/local/include/",
+				"../printf/includes"
             ],
             "defines": [],
             "macFrameworkPath": [

@@ -65,8 +65,16 @@ void	push_swap(t_ps *ps)
 		}
 		else
 		{
-			runs = create_front(runs, qs_split_range(ps, left, right, to_run));
-			left = qs_merge(ps, &runs);
+			//check if already sorted
+			if ps_check_sort_n(A_LST, to_run)
+				left = ps_get_i_val(A_LST, to_run - 1)
+			else
+			{
+			//check if sa
+			//check if oneoff
+				runs = create_front(runs, qs_split_range(ps, left, right, to_run));
+				left = qs_merge(ps, &runs);
+			}
 		}
 		if (is_rot_sort(ps->a) || !runs)
 			break ;

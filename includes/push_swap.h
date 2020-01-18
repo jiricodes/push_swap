@@ -246,12 +246,19 @@ void			init_ps(t_ps *ps);
 void			clear_ps(t_ps *ps);
 int				check_valid(t_int_list *list);
 int				find_slot(t_int_list *list, int nb);
-void			ps_flags(t_ps *ps, char *flags);
-char			*ft_getflags_arg(int ac, char **av, char *range);
-void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
+int				ps_check_sort_n(t_int_list *list, int len);
+int				ps_get_i_val(t_int_list *list, int i);
 void			ps_smart_rotate_a(t_ps *ps);
 void			do_smartpush_b(t_ps *ps);
 void			do_smartpush_b_nc(t_ps *ps);
+
+/*
+**	FLAG management
+*/
+
+void			ps_flags(t_ps *ps, char *flags);
+char			*ft_getflags_arg(int ac, char **av, char *range);
+void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
 
 /*
 ** PUSH_SWAP vfx environment initialization
