@@ -207,7 +207,7 @@ int		ps_check_sort_n(t_int_list *list, int len)
 		list = list->next;
 		len--;
 	}
-	return (TRUE)
+	return (TRUE);
 }
 
 /*
@@ -218,5 +218,5 @@ int		ps_get_i_val(t_int_list *list, int i)
 {
 	while (i-- > 0)
 		list = list->next;
-	return list->nb;
+	return (list->nb);
 }
