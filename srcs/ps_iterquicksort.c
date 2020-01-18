@@ -97,7 +97,7 @@ int		qs_merge(t_ps *ps, t_int_list **runs)
 			while (B_LST)
 			{
 				// this needs a optimization
-				ft_printf("B_MAX %d | SLOT i %d\n", find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN))
+				ft_printf("B_MAX %d | SLOT i %d\n", B_MAX, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
 				print_list(A_LST, "A", ' ');
 				print_list(B_LST, "B", ' ');
 				qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
