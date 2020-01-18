@@ -249,6 +249,7 @@ int				find_slot(t_int_list *list, int nb);
 int				ps_check_sort_n(t_int_list *list, int len);
 int				ps_get_i_val(t_int_list *list, int i);
 void			ps_smart_rotate_a(t_ps *ps);
+int				ps_sort_top3a(t_ps *ps);
 void			do_smartpush_b(t_ps *ps);
 void			do_smartpush_b_nc(t_ps *ps);
 

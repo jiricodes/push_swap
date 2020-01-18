@@ -63,6 +63,8 @@ void	push_swap(t_ps *ps)
 				do_sa(ps);
 			left = A_2ND;
 		}
+		else if (to_run == 3)
+			left = ps_sort_top3a(ps);
 		else
 		{
 			//check if already sorted

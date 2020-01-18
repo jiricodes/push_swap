@@ -220,3 +220,50 @@ int		ps_get_i_val(t_int_list *list, int i)
 		list = list->next;
 	return (list->nb);
 }
+
+/*
+** Sort top 3 of stack A
+** Only these possibilities:
+** 132 213 231 312 321 
+*/
+
+int		ps_sort_top3a(t_ps *ps)
+{
+	if (A_TOP < A_3RD && A_2ND > A_3RD)
+	{
+		do_ra(ps);
+		do_sa(ps);
+		return (A_2ND);
+	}
+	else if (A_TOP > A_2ND && A_TOP < A_3RD)
+	{
+		do_sa(ps);
+		return(A_3RD);
+	}
+	else if (A_TOP < A_2ND && A_TOP > A_3RD)
+	{
+		do_ra(ps);
+		do_sa(ps);
+		do_rra(ps);
+		do_sa(ps);
+		return (A_3RD);
+	}
+	else if (A_3RD > A_2ND && A_TOP > A_3RD)
+	{
+		do_sa(ps);
+		do_ra(ps);
+		do_sa(ps);
+		return (A_2ND);
+	}
+	else if (A_3RD < A_2ND && A_TOP > A_2ND)
+	{
+		do_sa(ps);
+		do_ra(ps);
+		do_sa(ps);
+		do_rra(ps);
+		do_sa(ps);
+		return (A_3RD);
+	}
+	else
+		return (A_3RD);
+}
