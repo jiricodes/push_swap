@@ -34,7 +34,7 @@ void	push_swap(t_ps *ps)
 	t_int_list *runs;
 	int	left;
 	int right;
-	int current;
+	// int current;
 	int	to_run;
 	int pos;
 	// char s[1];
@@ -43,7 +43,7 @@ void	push_swap(t_ps *ps)
 	runs = NULL;
 	left = find_min(A_LST) - 1;
 	right = get_median(A_LST);
-	current = qs_runlenght(A_LST, left, right);
+	// current = qs_runlenght(A_LST, left, right);
 	to_run = A_CNT;
 	while (!is_rot_sort(ps->a))
 	{
