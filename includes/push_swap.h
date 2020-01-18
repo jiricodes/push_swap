@@ -38,7 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
-# define RUN_SIZE 32
+# define RUN_SIZE 16
 # define TRUE 1
 # define FALSE 0
 
