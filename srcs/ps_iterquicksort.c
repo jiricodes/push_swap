@@ -39,6 +39,29 @@ int		qs_split_range(t_ps *ps, int left, int right, int len)
 /*
 **	Merge
 */
+static void	ps_merge_rotate_b(t_ps *ps, int pos)
+{
+	int i;
+
+	if (pos < B_CNT / 2)
+	{
+		i = 0;
+		while (i < pos)
+		{
+			do_rb(ps);
+			i++;
+		}
+	}
+	else
+	{
+		i = B_CNT;
+		while (i > pos)
+		{
+			do_rrb(ps);
+			i--;
+		}
+	}
+}
 
 int		qs_merge(t_ps *ps, t_int_list **runs)
 {
@@ -68,7 +91,17 @@ int		qs_merge(t_ps *ps, t_int_list **runs)
 	ps_info(ps);
 	left = B_MAX;
 	if (is_rot_sort(ps->a))
-		qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
+		{
+			while (B_LST)
+			{
+				// this needs a optimization
+				qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
+				ps_merge_rotate_b(ps, find_nb_pos(B_LST, B_MAX));
+				do_pa(ps);
+				ps_info(ps);
+			}
+			return (left);
+		}
 	do_pa(ps);
 	while (B_LST)
 	{
