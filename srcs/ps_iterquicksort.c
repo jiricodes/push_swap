@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:28:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 10:18:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:00:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		qs_split_range(t_ps *ps, int left, int right, int len)
 		if (count_list(A_LST) == 3)
 		{
 			ps_sort_top3a(ps);
-			break;
+			break ;
 		}
 		if (left < A_TOP && A_TOP <= right)
 			do_pb(ps);
@@ -44,33 +44,36 @@ int		qs_merge(t_ps *ps, t_int_list **runs)
 {
 	int		left;
 	int		right;
-	int		len;
+	// int		len;
 
-	ps_info(ps);
-	if (B_MIN > A_MIN)
-		while (A_LAST > B_MAX)
-			do_rra(ps);
-	while (B_CNT > RUN_SIZE)
-	{
-		left = get_median(B_LST);
-		right = B_MAX;
-		len = qs_runlenght(B_LST, left, right);
-		*runs = create_front(*runs, len);
-		while (qs_contains(B_LST, left, right))
-		{
-			if (left < B_TOP && B_TOP <= right)
-				do_pa(ps);
-			else
-				do_rb(ps);
-		}
-		ps_info(ps);
-	}
+	// ps_info(ps);
+	// if (B_MIN > A_MIN && B_CNT > RUN_SIZE)
+	// 	while (A_LAST > B_MAX)
+	// 		do_rra(ps);
+	// while (B_CNT > RUN_SIZE)
+	// {
+	// 	left = get_median(B_LST);
+	// 	right = B_MAX;
+	// 	len = qs_runlenght(B_LST, left, right);
+	// 	*runs = create_front(*runs, len);
+	// 	while (qs_contains(B_LST, left, right))
+	// 	{
+	// 		if (left < B_TOP && B_TOP <= right)
+	// 			do_pa(ps);
+	// 		else
+	// 			do_rb(ps);
+	// 	}
+	// 	ps_info(ps);
+	// }
+	right = (*runs)->nb;
 	ps_info(ps);
 	left = B_MAX;
-	do_pa(ps);
 	while (B_LST)
 	{
-		qs_insertsort(ps);
+		if (B_TOP < A_MIN && B_MAX < A_MIN && !is_rot_sort(ps->a))
+			do_pa(ps);
+		else
+			qs_insertsort(ps);
 		ps_info(ps);
 	}
 	return (left);
@@ -136,20 +139,159 @@ int		qs_contains(t_int_list *list, int left, int right)
 ** Insertsort from stack B to stack A
 */
 
+static int qs_best_rot(t_ps *ps, int pos_a, int pos_b)
+{
+	int best;
+	int ret;
+
+	best = INT_MAX;
+	ret = 0;
+	if (qs_bestcheck(pos_a, pos_b, best))
+	{
+		best = pos_a > pos_b ? pos_a : pos_b;
+		ret = 1;
+	}
+	if (qs_bestcheck(A_CNT - pos_a, B_CNT - pos_b, best))
+	{
+		best = A_CNT - pos_a > B_CNT - pos_b ? A_CNT - pos_a : B_CNT - pos_b;
+		ret = 2;
+	}
+	if ((pos_a + B_CNT - pos_b) < best)
+	{
+		best = pos_a + B_CNT - pos_b;
+		ret = 3;
+	}
+	if ((pos_b + A_CNT - pos_a) < best)
+	{
+		best = pos_b + A_CNT - pos_a;
+		ret = 4;
+	}
+	return (ret);
+}
+
+static void qs_syncstacks(t_ps *ps, int a, int b)
+{
+	int mode;
+
+	mode = qs_best_rot(ps, a, b);
+	if (mode == 0)
+		error_exit("Stacks cannot be synced @qs_syncstacks");
+	else if (mode == 1)
+	{
+		while (a-- > 0)
+			do_ra(ps);
+		while (b-- > 0)
+			do_rb(ps);
+	}
+	else if (mode == 2)
+	{
+		while (a++ < A_CNT)
+			do_rra(ps);
+		while (b++ < B_CNT)
+			do_rrb(ps);
+	}
+	else if (mode == 3)
+	{
+		while (a-- > 0)
+			do_ra(ps);
+		while (b++ < B_CNT)
+			do_rrb(ps);
+	}
+	else if (mode == 4)
+	{
+		while (a++ < A_CNT)
+			do_rra(ps);
+		while (b-- > 0)
+			do_rb(ps);
+	}
+}
+
 void	qs_insertsort(t_ps *ps)
 {
-	if (B_TOP < A_MIN || B_TOP > A_MAX)
+	int	best;
+	int a;
+	int b;
+
+	best = qs_insert_optimal(ps);
+	b = find_nb_pos(B_LST, best);
+	a = qs_find_slot(A_LST, best);
+	qs_syncstacks(ps, a, b);
+	do_pa(ps);
+}
+
+/*
+** Iterates through stack B and returns the number that
+** requires the smallest amount of operations in order
+** to be inserted on stack A in sorted manner.
+*/
+
+int			qs_bestcheck(int a, int b, int best)
+{
+	int max;
+
+	max = a > b ? a : b;
+	return (max < best);
+}
+
+static int	qs_curbest(t_ps *ps, int pos_a, int pos_b, int best)
+{
+	if (qs_bestcheck(pos_a, pos_b, best))
+		best = pos_a > pos_b ? pos_a : pos_b;
+	if (qs_bestcheck(A_CNT - pos_a, B_CNT - pos_b, best))
+		best = A_CNT - pos_a > B_CNT - pos_b ? A_CNT - pos_a : B_CNT - pos_b;
+	if ((pos_a + B_CNT - pos_b) < best)
+		best = pos_a + B_CNT - pos_b;
+	if ((pos_b + A_CNT - pos_a) < best)
+		best = pos_b + A_CNT - pos_a;
+	return (best);
+}
+
+int			qs_insert_optimal(t_ps *ps)
+{
+	int			best;
+	int			best_dist;
+	int			pos_a;
+	int			pos_b;
+	t_int_list	*tmp;
+
+	best_dist = INT_MAX;
+	best = 0;
+	tmp = B_LST;
+	while (tmp)
 	{
-		ps_smart_rotate_a(ps);
-		do_pa(ps);
-		return ;
+		pos_a = qs_find_slot(A_LST, tmp->nb);
+		pos_b = find_nb_pos(B_LST, tmp->nb);
+		if (qs_curbest(ps, pos_a, pos_b, best_dist) < best_dist)
+		{
+			best = tmp->nb;
+			best_dist = qs_curbest(ps, pos_a, pos_b, best_dist);
+		}
+		tmp = tmp->next;
 	}
-	if (B_TOP < A_TOP && B_TOP > A_LAST)
-		do_pa(ps);
-	else if (B_TOP > A_TOP)
-		do_ra(ps);
-	else
-		do_rra(ps);
+	return (best);
+}
+
+/*
+** Find slot in unsorted list
+*/
+
+int			qs_find_slot(t_int_list *list, int nb)
+{
+	int i;
+
+	i = 0;
+	if (nb < find_min(list) || nb > find_max(list))
+		return (find_nb_pos(list, find_min(list)));
+	if (nb < list->nb && nb > get_last(list))
+		return (i);
+	while (list->next)
+	{
+		i++;
+		if (list->nb < nb && list->next->nb > nb)
+			break ;
+		list = list->next;
+	}
+	return (i);
 }
 
 /*

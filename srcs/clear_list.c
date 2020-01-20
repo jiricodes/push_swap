@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:18:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/09 17:25:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 14:40:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	clear_list(t_int_list **list)
 
 void	clear_ps(t_ps *ps)
 {
+	clear_list(&(ps->org));
 	clear_list(&(ps->a->lst));
 	clear_list(&(ps->b->lst));
 	clear_cmds(&(ps->cmds));

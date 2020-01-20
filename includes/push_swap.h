@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/17 20:05:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 12:53:38 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define B_2ND ps->b->lst->next->nb
 # define B_LAST get_last(ps->b->lst)
 # define CMD ps->cmds
-# define RUN_SIZE 16
+# define RUN_SIZE 5000
 # define TRUE 1
 # define FALSE 0
 
@@ -198,6 +198,9 @@ int				ps_pars_rotate(t_ps *ps);
 ** Iterative quicksort
 */
 
+int				qs_bestcheck(int a, int b, int best);
+int				qs_find_slot(t_int_list *list, int nb);
+int				qs_insert_optimal(t_ps *ps);
 int				qs_runlenght(t_int_list *list, int left, int right);
 int				qs_nextrun(t_int_list **runs);
 int				qs_contains(t_int_list *list, int left, int right);
