@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:49:20 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:58:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:53:57 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,4 @@ void	ps_checker(t_int_list **a, t_int_list **b, t_cmd *cmd)
 		ptr = ptr->next;
 	}
 	is_correct_ps(*a, *b);
-	// ft_printf("Result:\n");
-	// print_list(*a, "a", ' ');
-	// print_list(*b, "b", ' ');
 }

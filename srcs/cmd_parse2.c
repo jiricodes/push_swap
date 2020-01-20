@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:11:57 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:56:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:51:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void		parse_rrb(t_cmd **cmd)
 
 void		parse_cmds(t_cmd **cmd)
 {
-	// parse_rotates(cmd);
 	parse_ra(cmd);
 	parse_rb(cmd);
 	parse_rra(cmd);

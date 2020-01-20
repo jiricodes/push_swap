@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:33:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:28:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:53:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int		main(int ac, char **av)
 	if (ps.flags.v)
 		visualise_ps(&ps);
 	clear_ps(&ps);
-	// while(1){}
 	return (0);
 }

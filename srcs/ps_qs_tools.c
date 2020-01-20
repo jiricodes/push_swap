@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:28:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 18:15:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:51:57 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void		qs_insertsort(t_ps *ps)
 	int b;
 
 	best = A_CNT != 3 ? qs_insert_optimal(ps) : B_MAX;
-	// best = qs_insert_optimal(ps);
 	b = find_nb_pos(B_LST, best);
 	a = qs_find_slot(A_LST, best);
 	qs_syncstacks(ps, a, b);

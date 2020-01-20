@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:51:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:51:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void		push_swap(t_ps *ps)
 	ps_smart_rotate_a(ps);
 	parse_cmds(&(CMD));
 	print_cmd_list(CMD);
-	// print_list(A_LST, "A", ' ');
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
 	if (FLG_V)
