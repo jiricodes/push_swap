@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/17 19:57:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 10:18:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,24 +109,14 @@ void	push_swap(t_ps *ps)
 		// print_list(runs, "runs", ' ');
 		// ft_printf("%d\n", to_run);
 		// print_cmd_list(CMD);
-		
-		
-	// 	// special cases (to_run < 4)
-	// 	//split
-	// 	//merge
-	// 	// left = merge()
-	// 	to_run = qs_nextrun(&runs);
-	// 	// right = median from next run
-	// 	// measure run and update runs_list
-
 	}
 	ps_smart_rotate_a(ps);
 	parse_cmds(&(CMD));
 	print_cmd_list(CMD);
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
-	// if (FLG_V)
-	// 	visualise_ps(ps);
+	if (FLG_V)
+		visualise_ps(ps);
 	clear_ps(ps);
 }
 

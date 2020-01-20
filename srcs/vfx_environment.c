@@ -6,19 +6,21 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:02:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/17 11:57:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 10:28:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	vfx_init(t_ps *ps, t_ps_vfx *vfx)
+void		vfx_init(t_ps *ps, t_ps_vfx *vfx)
 {
 	vfx->w = WIN_WIDTH;
 	vfx->h = WIN_HEIGHT;
 	vfx_init_elems(vfx);
 	vfx_copy_info(ps);
 	vfx->rat = (vfx->graph_bg.width - 2) / ps->max;
+	if (vfx->rat > 100)
+		vfx->rat = 100;
 	vfx->lines = (vfx->graph_bg.height - 2) / ps->count;
 	if (vfx->lines > 20)
 		vfx->lines = 20;
@@ -28,7 +30,7 @@ void	vfx_init(t_ps *ps, t_ps_vfx *vfx)
 	ps->vfx->last_cmd = ft_strnew(1);
 }
 
-void	vfx_init_elems(t_ps_vfx *vfx)
+void		vfx_init_elems(t_ps_vfx *vfx)
 {
 	vfx->bg_img.width = WIN_WIDTH;
 	vfx->bg_img.height = WIN_HEIGHT;
@@ -52,19 +54,35 @@ void	vfx_init_elems(t_ps_vfx *vfx)
 	vfx_create_rectangle_img(VFX_P, &(vfx->cover_tile));
 }
 
-void	vfx_copy_info(t_ps *ps)
+static void	vfx_adjust_nbs(t_ps *ps)
+{
+	t_int_list *tmp;
+
+	tmp = ps->vfx_a->lst;
+	while (tmp)
+	{
+		tmp->nb += -1 * ps->vfx_a->min + 1;
+		tmp = tmp->next;
+	}
+	ps->vfx_a->min = find_min(ps->vfx_a->lst);
+	ps->vfx_a->max = find_max(ps->vfx_a->lst);
+}
+
+void		vfx_copy_info(t_ps *ps)
 {
 	ps->vfx_a = (t_stk *)malloc(sizeof(t_stk));
 	ps->vfx_a->count = count_list(ps->org);
 	ps->vfx_a->min = find_min(ps->org);
 	ps->vfx_a->max = find_max(ps->org);
 	ps->vfx_a->lst = copy_list(ps->org);
+	if (ps->vfx_a->min < 1)
+		vfx_adjust_nbs(ps);
 	ps->vfx_b = (t_stk *)malloc(sizeof(t_stk));
 	ft_bzero(ps->vfx_b, sizeof(t_stk));
 	ps->vfx_cmds = ps->cmds;
 }
 
-void	vfx_reset_graph(t_ps *ps)
+void		vfx_reset_graph(t_ps *ps)
 {
 	clear_list(&(ps->vfx_a->lst));
 	clear_list(&(ps->vfx_b->lst));

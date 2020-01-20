@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/17 11:51:30 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/20 10:41:27 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,7 @@ clean:
 
 fclean: clean
 	# @make fclean -C ./library
-	@/bin/rm -f $(NAME) $(CHECK)
-	@echo "$(C_RED)[Removed $(NAME)]$(C_RES)"
+	@/bin/rm -f $(NAME) $(CHECK) ps_linux
+	@echo "$(C_RED)[Removed $(NAME) and $(CHECK)]$(C_RES)"
 
 re: fclean all

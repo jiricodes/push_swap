@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/17 10:09:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 09:48:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static void	nb_parse_str(t_ps *ps, char *str)
 			i++;
 		if (str[i] == '\0')
 			break ;
-		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
+		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && str[i] != '-')
 			error_exit("File contains invalid characters");
 		A_LST = create_back(A_LST, ft_atoi(&str[i]));
 		ps->org = create_back(ps->org, ft_atoi(&str[i]));
+		if (str[i] == '-')
+			i++;
 		while (ft_isdigit(str[i]))
 			i++;
 	}

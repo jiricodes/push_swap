@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:43:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 10:38:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	visualise_ps(t_ps *ps)
 {
+	if (count_list(ps->org) > 900)
+		error_exit("Over visualiser limit (900). Use the python version :)");
 	ps->vfx = (t_ps_vfx*)malloc(sizeof(t_ps_vfx));
 	ps->VFX_P = mlx_init();
 	vfx_init(ps, ps->vfx);

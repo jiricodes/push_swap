@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:28:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/17 19:55:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 10:18:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,7 @@ int		ps_sort_top3a(t_ps *ps)
 	else if (A_TOP > A_2ND && A_TOP < A_3RD)
 	{
 		do_sa(ps);
-		return(A_3RD);
+		return (A_3RD);
 	}
 	else if (A_TOP < A_2ND && A_TOP > A_3RD)
 	{
