@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 18:51:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:47:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,15 @@ void		push_swap(t_ps *ps)
 	int			right;
 
 	ps_info(ps);
-	runs = NULL;
-	left = find_min(A_LST) - 1;
-	right = get_median(A_LST);
-	qs_dorun(ps, left, right, &runs);
+	if (A_CNT == 3)
+		ps_a_sort3(ps);
+	else if (A_CNT > 3)
+	{
+		runs = NULL;
+		left = find_min(A_LST) - 1;
+		right = get_median(A_LST);
+		qs_dorun(ps, left, right, &runs);
+	}
 	ps_smart_rotate_a(ps);
 	parse_cmds(&(CMD));
 	print_cmd_list(CMD);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:17:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 09:32:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:24:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,25 @@ void		ps_flags(t_ps *ps, char *flags)
 		ps->flags.c = 1;
 }
 
+void		ch_flags(t_ps *ps, char *flags)
+{
+	ft_bzero(&(ps->flags), sizeof(t_flag));
+	if (ft_strchr(flags, '?') || ft_strchr(flags, 'u'))
+		ch_usage_exit(0);
+	if (ft_strchr(flags, 'i'))
+		ps_info_exit();
+	if (ft_strchr(flags, 'f'))
+		ps->flags.f = 1;
+	if (ft_strchr(flags, 'v'))
+		ps->flags.v = 1;
+	if (ft_strchr(flags, 's'))
+		ps->flags.s = 1;
+	if (ft_strchr(flags, 't'))
+		ps->flags.t = 1;
+	if (ft_strchr(flags, 'c'))
+		ps->flags.c = 1;
+}
+
 void		ps_fetch_flgdata(t_ps *ps, int ac, char **av)
 {
 	int i;
@@ -71,6 +90,8 @@ void		ps_fetch_flgdata(t_ps *ps, int ac, char **av)
 		i = 1;
 		while (!ft_strstr(av[i], "-s") && i < ac)
 			i++;
+		if (i == ac - 1)
+			error_exit("No parameter for flag -s");
 		i++;
 		ps->flags.sec = ft_atoi(av[i]);
 	}
@@ -79,6 +100,8 @@ void		ps_fetch_flgdata(t_ps *ps, int ac, char **av)
 		i = 1;
 		while (!ft_strstr(av[i], "-c") && i < ac)
 			i++;
+		if (i == ac - 1)
+			error_exit("No parameter for flag -c");
 		i++;
 		ps->flags.color = ft_atoi(av[i]);
 	}

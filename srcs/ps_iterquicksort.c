@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:28:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:31:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:45:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		qs_split_range(t_ps *ps, int left, int right, int len)
 	{
 		if (count_list(A_LST) == 3)
 		{
-			ps_sort_top3a(ps);
+			ps_a_sort3(ps);
 			break ;
 		}
 		if (left < A_TOP && A_TOP <= right)

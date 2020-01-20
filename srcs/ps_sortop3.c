@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:08:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 16:09:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:44:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ int			ps_sort_top3a(t_ps *ps)
 	}
 	else
 		return (ps_sort_top3a2(ps));
+}
+
+/*
+** Sorts 3 on stack A
+** Only these possibilities:
+** 132 213 321
+*/
+
+int			ps_a_sort3(t_ps *ps)
+{
+	if (!is_rot_sort(ps->a))
+		do_sa(ps);
+	return (find_max(A_LST));
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:54:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 16:25:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:44:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void			ps_readargs(t_ps *ps, int ac, char **av);
 */
 
 void			error_exit(char *str);
-void			ch_usage_exit(void);
+void			ch_usage_exit(int error);
 void			ps_usage_exit(void);
 void			ps_info_exit(void);
 int				is_sort_list(t_int_list *list);
@@ -256,6 +256,7 @@ void			ps_smart_rotate_a(t_ps *ps);
 int				ps_sort_top3a(t_ps *ps);
 void			do_smartpush_b(t_ps *ps);
 void			do_smartpush_b_nc(t_ps *ps);
+int				ps_a_sort3(t_ps *ps);
 
 /*
 **	FLAG management
@@ -264,6 +265,7 @@ void			do_smartpush_b_nc(t_ps *ps);
 void			ps_flags(t_ps *ps, char *flags);
 char			*ft_getflags_arg(int ac, char **av, char *range);
 void			ps_fetch_flgdata(t_ps *ps, int ac, char **av);
+void			ch_flags(t_ps *ps, char *flags);
 
 /*
 ** PUSH_SWAP vfx environment initialization

@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/20 16:10:57 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/20 19:49:30 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ C_L_BLUE = \033[1;34m
 C_WHITE = \033[1;37m
 C_RES = \033[0m
 
-NAME = ps_test
+NAME = push_swap
 CHECK = checker
 
 LIB = ../printf/libftprintf.a

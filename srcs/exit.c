@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 17:28:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:03:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	ps_usage_exit(void)
 	exit(0);
 }
 
-void	ch_usage_exit(void)
+void	ch_usage_exit(int error)
 {
+	if (error)
+		ft_printf("{RED}{B}Error{EOC}\n\n");
 	ft_printf("{GREEN}{U}Checker Usage:{EOC}\n\n");
 	ft_printf("Syntax:\t./checker [-flags] .. [numbers] ..\n\n");
 	ft_printf("Available flags:\n");
