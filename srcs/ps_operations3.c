@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*   ps_operations3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:56:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 15:33:20 by jnovotny         ###   ########.fr       */
+/*   Created: 2020/01/20 15:49:39 by jnovotny          #+#    #+#             */
+/*   Updated: 2020/01/20 15:52:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void			do_ra_i(t_ps *ps, int i)
 {
-	t_ps		ps;
-	char		*flgs;
+	while (i-- > 0)
+		do_ra(ps);
+}
 
-	if (ac < 2)
-		ps_usage_exit();
-	init_ps(&ps);
-	flgs = ft_getflags_arg(ac, av, FLG_STR);
-	ps_flags(&ps, flgs);
-	free(flgs);
-	ps_fetch_flgdata(&ps, ac, av);
-	ps_fetch_numbers(&ps, ac, av);
-	if (!check_valid(ps.a->lst))
-		error_exit("Ivalid list of numbers (contains duplicates)");
-	push_swap(&ps);
-	return (0);
+void			do_rb_i(t_ps *ps, int i)
+{
+	while (i-- > 0)
+		do_rb(ps);
+}
+
+void			do_rra_i(t_ps *ps, int i)
+{
+	while (i++ < A_CNT)
+		do_rra(ps);
+}
+
+void			do_rrb_i(t_ps *ps, int i)
+{
+	while (i++ < B_CNT)
+		do_rrb(ps);
 }

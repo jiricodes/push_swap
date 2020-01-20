@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 12:53:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 13:00:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:29:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void		parse_rra_rot(t_cmd **cmd)
 	}
 }
 
-void		parse_rotates(t_cmd **cmd)
+void			parse_rotates(t_cmd **cmd)
 {
 	parse_ra_rot(cmd);
 	parse_rra_rot(cmd);

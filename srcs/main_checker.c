@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:33:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/19 15:44:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:28:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,28 @@
 
 int		main(int ac, char **av)
 {
-	int			i;
-	int			k;
+	t_ps		ps;
+	char		*flgs;
 	char		*str;
-	t_ps		*ps;
 
-
-	if (ac == 1)
-		return (0);
-	ps = (t_ps *)malloc(sizeof(t_ps));
-	init_ps(ps);
-	i = 0;
-	while (++i < ac)
-	{
-		k = 0;
-		while (av[i][k] != '\0')
-		{
-			if (!ft_isdigit(av[i][k]))
-				error_exit("Arguments are not valid numbers.");
-			k++;
-		}
-		ps->org = create_back(ps->org, ft_atoi(av[i]));
-		A_LST = create_back(A_LST, ft_atoi(av[i]));
-	}
+	if (ac < 2)
+		ch_usage_exit();
+	init_ps(&ps);
+	flgs = ft_getflags_arg(ac, av, FLG_STR);
+	ps_flags(&ps, flgs);
+	free(flgs);
+	ps_fetch_flgdata(&ps, ac, av);
+	ps_fetch_numbers(&ps, ac, av);
 	while (get_next_line(0, &str) > 0)
 	{
-		ps->cmds = create_cmd_back(ps->cmds, str);
+		ps.cmds = create_cmd_back(ps.cmds, str);
 		free(str);
 	}
-	ps_info(ps);
-	ps_checker(&(A_LST), &(B_LST), CMD);
-	visualise_ps(ps);
-	clear_ps(ps);
+	ps_info(&ps);
+	ps_checker(&(ps.a->lst), &(ps.b->lst), ps.cmds);
+	if (ps.flags.v)
+		visualise_ps(&ps);
+	clear_ps(&ps);
 	// while(1){}
 	return (0);
 }

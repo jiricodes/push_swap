@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 10:35:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:28:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ void	ps_usage_exit(void)
 	ft_printf("-v\t\tEnables visualisation (max 900 numbers)\n");
 	ft_printf("-f [FILENAME]\tReads data from the file\n");
 	ft_printf("-t\t\tShows total number of steps\n");
+	ft_printf("-c [INT_COLOR]\tChanges visualiser color\n");
+	ft_printf("-u\t\tShows usage\n");
+	ft_printf("-i\t\tShows program informations. If selected, normal\n");
+	ft_printf("\t\tprogram functionality is disabled!\n");
+	exit(0);
+}
+
+void	ch_usage_exit(void)
+{
+	ft_printf("{GREEN}{U}Checker Usage:{EOC}\n\n");
+	ft_printf("Syntax:\t./checker [-flags] .. [numbers] ..\n\n");
+	ft_printf("Available flags:\n");
+	ft_printf("-v\t\tEnables visualisation (max 900 numbers)\n");
+	ft_printf("-f [FILENAME]\tReads data from the file\n");
 	ft_printf("-c [INT_COLOR]\tChanges visualiser color\n");
 	ft_printf("-u\t\tShows usage\n");
 	ft_printf("-i\t\tShows program informations. If selected, normal\n");

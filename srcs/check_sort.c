@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 10:34:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/07 17:28:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:11:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int		is_sort_list(t_int_list *list)
 void	is_correct_ps(t_int_list *a, t_int_list *b)
 {
 	if (is_sort_list(a) && b == NULL)
-		ft_printf("{GREEN}{B}OK{EOC}\n");
+		ft_printf("OK\n");
 	else
-		ft_printf("{RED}{B}KO{EOC}\n");
+		ft_printf("KO\n");
 }
 
 /*

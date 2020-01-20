@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:09:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 15:06:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:51:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,11 @@ static int	qs_specruns(t_ps *ps, int to_run, int left)
 	return (left);
 }
 
-void	push_swap(t_ps *ps)
+static void	qs_dorun(t_ps *ps, int left, int right, t_int_list **run)
 {
-	t_int_list	*runs;
-	int			left;
-	int			right;
 	int			to_run;
 	int			pos;
 
-	ps_info(ps);
-	runs = NULL;
-	left = find_min(A_LST) - 1;
-	right = get_median(A_LST);
 	to_run = A_CNT;
 	while (!is_rot_sort(ps->a))
 	{
@@ -65,35 +58,35 @@ void	push_swap(t_ps *ps)
 			left = ps_get_i_val(A_LST, to_run - 1);
 		else
 		{
-			runs = create_front(runs, qs_split_range(ps, left, right, to_run));
-			if (is_rot_sort(ps->a))
-			{
-				while (B_LST)
-				{
-					qs_rot_a(ps, find_slot_rotsort(A_LST, B_MAX, A_MAX, A_MIN));
-					ps_merge_rotate_b(ps, find_nb_pos(B_LST, B_MAX));
-					do_pa(ps);
-					ps_info(ps);
-				}
-				break ;
-			}
-			left = qs_merge(ps, &runs);
+			*run = create_front(*run, qs_split_range(ps, left, right, to_run));
+			left = qs_merge(ps);
 		}
-		if (is_rot_sort(ps->a) || !runs)
+		if (is_rot_sort(ps->a) || !*run)
 			break ;
 		ps_info(ps);
 		pos = find_nb_pos(A_LST, left);
-		if (pos == A_CNT - 1)
-			pos = 0;
-		else
-			pos++;
+		pos = pos == A_CNT - 1 ? 0 : pos + 1;
 		qs_rot_a(ps, pos);
-		to_run = qs_nextrun(&runs);
+		to_run = qs_nextrun(run);
 		right = qs_get_median_range(A_LST, to_run);
 	}
+}
+
+void		push_swap(t_ps *ps)
+{
+	t_int_list	*runs;
+	int			left;
+	int			right;
+
+	ps_info(ps);
+	runs = NULL;
+	left = find_min(A_LST) - 1;
+	right = get_median(A_LST);
+	qs_dorun(ps, left, right, &runs);
 	ps_smart_rotate_a(ps);
 	parse_cmds(&(CMD));
 	print_cmd_list(CMD);
+	// print_list(A_LST, "A", ' ');
 	if (FLG_T)
 		ft_printf("Total: %d\n", count_cmd_list(CMD));
 	if (FLG_V)

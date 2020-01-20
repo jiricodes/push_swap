@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:55:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 18:53:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:01:53 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,140 +21,67 @@ void	ps_smart_rotate_a(t_ps *ps)
 	int			i;
 
 	i = find_nb_pos(A_LST, A_MIN);
+	qs_rot_a(ps, i);
+}
+
+/*
+** Rotate A to a specific index
+*/
+
+void	qs_rot_a(t_ps *ps, int i)
+{
 	if (i <= A_CNT / 2)
-	{
-		while (i > 0)
-		{
-			do_ra(ps);
-			i--;
-		}
-	}
+		do_ra_i(ps, i);
 	else
-	{
-		while (i < A_CNT)
-		{
-			do_rra(ps);
-			i++;
-		}
-	}
+		do_rra_i(ps, i);
 }
 
 /*
-** Checks if ss or sa or sb is a viable option
+**	Returns median of first N numbers of the list
 */
 
-int		check_switches_front(t_ps *ps, int pos)
+int		qs_get_median_range(t_int_list *list, int n)
 {
-	int pos2;
+	t_int_list	*tmp;
+	int			res;
 
-	if (pos == 0)
+	if (n == 0)
 		return (0);
-	pos2 = find_slot_rev_rotsort(B_LST, A_2ND, B_MAX, B_MIN);
-	if (pos < B_CNT / 2 && (pos2 < (pos - 1) || (A_CNT - pos2) < pos))
+	tmp = NULL;
+	while (list && n > 0)
 	{
-		do_sa(ps);
-		return (1);
+		tmp = create_back(tmp, list->nb);
+		list = list->next;
+		n--;
 	}
-	else if (pos >= B_CNT / 2 && (pos2 > (pos + 1) || (A_CNT - pos) > pos2))
-	{
-		do_sa(ps);
-		return (1);
-	}
-	else
-		return (0);
-}
-
-int		check_switches_back(t_ps *ps, int pos)
-{
-	int pos2;
-
-	if (pos == 0)
-		return (0);
-	pos2 = find_slot_rev_rotsort(B_LST, A_LAST, B_MAX, B_MIN);
-	if (pos < B_CNT / 2 && (pos2 < (pos - 1) || (A_CNT - pos2) < pos))
-	{
-		do_rra(ps);
-		do_smartpush_b_nc(ps);
-		return (1);
-	}
-	else if (pos >= B_CNT / 2 && (pos2 > (pos + 1) || (A_CNT - pos) > pos2))
-	{
-		do_rra(ps);
-		do_smartpush_b_nc(ps); // fix!
-		return (1);
-	}
-	else
-		return (0);
+	res = get_median(tmp);
+	clear_list(&tmp);
+	return (res);
 }
 
 /*
-** Does PB in such fashion that stack B is always sorted
+** Checks if next N numbers of the list are sorted
 */
 
-void	do_smartpush_b(t_ps *ps)
+int		ps_check_sort_n(t_int_list *list, int len)
 {
-	int	p;
-
-	if (B_CNT < 2)
+	while (list && len > 1)
 	{
-		do_pb(ps);
-		return ;
+		if (list->next && list->nb > list->next->nb)
+			return (FALSE);
+		list = list->next;
+		len--;
 	}
-	p = find_slot_rev_rotsort(B_LST, A_TOP, B_MAX, B_MIN);
-	if (p < B_CNT / 2)
-	{
-		if (check_switches_front(ps, p))
-		{
-			do_smartpush_b(ps);
-			return ;
-		}
-		while (p-- > 0)
-			do_rb(ps);
-	}
-	else
-	{
-		if (check_switches_back(ps, p))
-			return ;
-		p = find_slot_rev_rotsort(B_LST, A_TOP, B_MAX, B_MIN);
-		while (p++ < B_CNT)
-			do_rrb(ps);
-	}
-	do_pb(ps);
-	if (!is_rev_rot_sort(ps->b))
-	{
-		ft_printf("{RED}{B}ERROR @smartpush_b!{EOC}\n");
-		print_list(B_LST, "not revsort B", ' ');
-		exit(0);
-	}
+	return (TRUE);
 }
 
 /*
-** Does PB in such fashion that stack B is always sorted
+** Returns [i] number of the list
 */
 
-void	do_smartpush_b_nc(t_ps *ps)
+int		ps_get_i_val(t_int_list *list, int i)
 {
-	int	p;
-
-	if (B_CNT < 2)
-	{
-		do_pb(ps);
-		return ;
-	}
-	p = find_slot_rev_rotsort(B_LST, A_TOP, B_MAX, B_MIN);
-	if (p < B_CNT / 2)
-	{
-		while (p-- > 0)
-			do_rb(ps);
-	}
-	else
-		while (p++ < B_CNT)
-			do_rrb(ps);
-	do_pb(ps);
-	if (!is_rev_rot_sort(ps->b))
-	{
-		ft_printf("{RED}{B}ERROR @smartpush_b!{EOC}\n");
-		print_list(B_LST, "not revsort B", ' ');
-		exit(0);
-	}
+	while (i-- > 0)
+		list = list->next;
+	return (list->nb);
 }
