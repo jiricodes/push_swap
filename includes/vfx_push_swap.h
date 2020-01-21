@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:53:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 10:04:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:23:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void			vfx_letter_a(t_ps_vfx *vfx, t_point *p);
 void			vfx_letter_b(t_ps_vfx *vfx, t_point *p);
 void			vfx_draw_play(t_ps_vfx *vfx);
 void			vfx_draw_pause(t_ps_vfx *vfx);
+int				color_value(int current, int end, double per);
 
 /*
 ** Event managememt

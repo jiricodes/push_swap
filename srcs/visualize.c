@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:51:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 10:38:17 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:23:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int		ps_vfx_key_press(int key, t_ps *ps)
 		vfx_graph_step(ps);
 	}
 	else if (key == KEY_ARROW_UP)
-		ps->vfx_gc = ps->vfx_gc << 1;
+		ps->vfx_gc = color_value(ps->vfx_gc, VFX_WHITE, 0.05);
 	else if (key == KEY_ARROW_DOWN)
-		ps->vfx_gc = ps->vfx_gc >> 1;
+		ps->vfx_gc = color_value(ps->vfx_gc, VFX_BLACK, 0.05);
 	return (0);
 }
 

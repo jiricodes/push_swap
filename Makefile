@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 16:50:37 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/20 19:49:30 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/01/21 14:42:47 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ C_RES = \033[0m
 NAME = push_swap
 CHECK = checker
 
-LIB = ../printf/libftprintf.a
-L_LIB = ../printf/libft.a
+LIB = ../printf/libft.a
 
 FTS =	check_sort.c \
 		clear_list.c \
@@ -51,14 +50,15 @@ FTS =	check_sort.c \
 		push_swap_ops.c \
 		push_swap_iterquicksort.c \
 		read_numbers.c \
-		visualize.c \
+		vfx_colors.c \
 		vfx_draw_env.c \
 		vfx_draw_graph.c \
 		vfx_draw_graph2.c \
 		vfx_draw_playback.c \
 		vfx_draw_text.c \
 		vfx_engine.c \
-		vfx_environment.c
+		vfx_environment.c \
+		visualize.c
 
 L_FTS =	check_sort.c \
 		clear_list.c \
@@ -117,7 +117,7 @@ $(CHECK):
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 linux:
-	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(L_LIB)
+	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(LIB)
 	@echo "$(C_GREEN)[$(C_BLUE)linux version$(C_GREEN) was compiled (no graphic)]$(C_RES)"
 
 clean:

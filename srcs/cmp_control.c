@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 09:49:20 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 18:53:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:01:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	cmd_to_func2(t_int_list **a, t_int_list **b, char *cmd)
 		*b = rev_rotate(*b);
 	}
 	else
-		error_exit("Wrong Command!");
+		error_exit("Unknown Command!");
 }
 
 void	ps_checker(t_int_list **a, t_int_list **b, t_cmd *cmd)

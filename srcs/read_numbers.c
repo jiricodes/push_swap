@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 19:26:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:32:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void		ps_fetch_numbers(t_ps *ps, int ac, char **av)
 
 static void	nb_parse_str(t_ps *ps, char *str)
 {
-	int i;
+	int			i;
+	long long	nb;
 
 	i = 0;
 	while (str[i])
@@ -42,9 +43,12 @@ static void	nb_parse_str(t_ps *ps, char *str)
 		if (str[i] == '\0')
 			break ;
 		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && str[i] != '-')
-			error_exit("File contains invalid characters");
-		A_LST = create_back(A_LST, ft_atoi(&str[i]));
-		ps->org = create_back(ps->org, ft_atoi(&str[i]));
+			error_exit("List contains invalid characters");
+		nb = ft_latoi(&str[i]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			error_exit("List contains number out of integer range");
+		A_LST = create_back(A_LST, (int)nb);
+		ps->org = create_back(ps->org, (int)nb);
 		if (str[i] == '-')
 			i++;
 		while (ft_isdigit(str[i]))

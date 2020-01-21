@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:15:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/10 10:03:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:09:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,7 @@
 # define KEY_1 18
 # define KEY_F1 122
 # define KEY_F2 120
+# define KEY_PLUS 69
+# define KEY_MINUS 78
+# define KEY_EQ 81
 #endif

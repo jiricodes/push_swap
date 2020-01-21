@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 10:02:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/20 10:28:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:23:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		vfx_init(t_ps *ps, t_ps_vfx *vfx)
 	vfx->h = WIN_HEIGHT;
 	vfx_init_elems(vfx);
 	vfx_copy_info(ps);
-	vfx->rat = (vfx->graph_bg.width - 2) / ps->max;
+	vfx->rat = (vfx->graph_bg.width - 2) / ps->vfx_a->max;
 	if (vfx->rat > 100)
 		vfx->rat = 100;
 	vfx->lines = (vfx->graph_bg.height - 2) / ps->count;
