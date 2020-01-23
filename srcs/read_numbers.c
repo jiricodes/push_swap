@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/23 19:51:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:01:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void		ps_readargs(t_ps *ps, int ac, char **av)
 		i--;
 	if ((ft_strstr(av[i], "-s") || ft_strstr(av[i], "-c")) && i < ac - 1)
 		i++;
+	if (i > 0 && (!ft_isdigit(av[i][0]) && av[i][0] != '-'\
+		&& av[i][0] != '+'))
+		error_exit("Invalid character in the input");
 	if (i == ac - 1)
 		error_exit("Invalid input (use flag -u for more information)");
 	if (((av[i][0] == '-' || av[i][0] == '+') && ft_strlen(av[i]) == 1))
