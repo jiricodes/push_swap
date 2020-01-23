@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 11:33:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/21 13:32:37 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:31:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	nb_parse_str(t_ps *ps, char *str)
 			break ;
 		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && str[i] != '-')
 			error_exit("List contains invalid characters");
+		if (str[i] == '-' && !ft_isdigit(str[i + 1]))
+			error_exit("List contains '-' not followed by a digit");
 		nb = ft_latoi(&str[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			error_exit("List contains number out of integer range");
@@ -79,6 +81,8 @@ void		ps_readargs(t_ps *ps, int ac, char **av)
 		i++;
 	if (i == ac - 1)
 		error_exit("Invalid input (use flag -u for more information)");
+	if (av[i][0] == '-' && ft_strlen(av[i]) == 1)
+		error_exit("List contains '-' without follow up digit");
 	while (++i < ac)
 		nb_parse_str(ps, av[i]);
 }
