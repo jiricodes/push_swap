@@ -58,3 +58,9 @@ git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd pus
 '''
 git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd push_swap; make nograph
 '''
+
+### Run Program
+
+'''
+ARG=$(printf '%s ' `seq 1 100 | sort -R`)
+'''

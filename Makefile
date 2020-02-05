@@ -124,8 +124,8 @@ $(CHECK): libft
 
 nograph: libft
 	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(LIB)
-	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(CNV_M) $(LIB)
-	@echo "$(C_GREEN)[Non-graphic version$(C_BLUE)$(NAME)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
+	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(CNV_M) $(LIB)
+	@echo "$(C_GREEN)[Non-graphic versions of $(C_BLUE)$(NAME)$(C_GREEN) and $(C_BLUE)$(CHECK)$(C_GREEN) were compiled]$(C_RES)"
 
 clean:
 	@make clean -C ./libft
