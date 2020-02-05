@@ -7,7 +7,7 @@ from PIL import Image
 from PIL import ImageTk
 
 
-def fetch_nblst(file_name = "../testfile"):
+def fetch_nblst(file_name = "./testfile"):
 	while True:
 		try:
 			f = open(file_name)
@@ -20,7 +20,7 @@ def fetch_nblst(file_name = "../testfile"):
 				res.append(int(n))
 			return res
 
-def fetch_cmds(file_name = "../result"):
+def fetch_cmds(file_name = "./result"):
 	res = list()
 	with open(file_name) as f:
 		for line in f:
