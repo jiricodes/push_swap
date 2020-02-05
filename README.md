@@ -61,6 +61,29 @@ git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd pus
 
 ### Run Program
 
+To check the usage:
 '''
-ARG=$(printf '%s ' `seq 1 100 | sort -R`)
+./push_swap -u
+'''
+
+Example of push_swap:
+'''
+ARG=$(printf '%s ' `seq 1 100 | sort -R`); ./push_swap $ARG
+'''
+
+Example of checker:
+'''
+ARG=$(printf '%s ' `seq 1 100 | sort -R`); ./push_swap $ARG | ./checker $ARG
+'''
+
+### Python visualiser
+
+Requirements:
+- python3
+- tkinter
+- PIL (pillow)
+
+Example:
+'''
+echo $(printf '%s ' `seq 1 100 | sort -R`) > testfile; ./push_swap -f testfile > result; python3 ./python_visualiser/ps_visual.py
 '''
