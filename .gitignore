@@ -4,3 +4,4 @@ test_file*
 tests/
 ps_test
 checker
+python_visualiser/__pycache__/
