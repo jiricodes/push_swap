@@ -49,32 +49,32 @@ made a special rule in makefile which compiles the program without the visualisa
 
 For visual version, requires 42-ecole graphic library [minilibx](https://github.com/gcamerli/minilibx).
 
-'''
+```
 git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd push_swap; make
-'''
+```
 
 ### Non-visual
 
-'''
+```
 git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd push_swap; make nograph
-'''
+```
 
 ### Run Program
 
 To check the usage:
-'''
+```
 ./push_swap -u
-'''
+```
 
 Example of push_swap:
-'''
+```
 ARG=$(printf '%s ' `seq 1 100 | sort -R`); ./push_swap $ARG
-'''
+```
 
 Example of checker:
-'''
+```
 ARG=$(printf '%s ' `seq 1 100 | sort -R`); ./push_swap $ARG | ./checker $ARG
-'''
+```
 
 ### Python visualiser
 
@@ -84,6 +84,6 @@ Requirements:
 - PIL (pillow)
 
 Example:
-'''
+```
 echo $(printf '%s ' `seq 1 100 | sort -R`) > testfile; ./push_swap -f testfile > result; python3 ./python_visualiser/ps_visual.py
-'''
+```
