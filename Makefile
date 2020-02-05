@@ -21,7 +21,7 @@ C_RES = \033[0m
 NAME = push_swap
 CHECK = checker
 
-LIB = ../printf/libft.a
+LIB = ./libft/libft.a
 
 FTS =	check_sort.c \
 		clear_list.c \
@@ -80,12 +80,12 @@ L_FTS =	check_sort.c \
 		push_swap_insertsort.c \
 		push_swap_merge.c \
 		push_swap_ops.c \
-		push_swap_iterquicksort.c \
+		push_swap_iterquicksort_novis.c \
 		read_numbers.c
 
 FTO = $(FTS.c=.o)
 
-LIB_I = ../printf/includes/
+LIB_I = ./libft/includes/
 
 I_DIR = ./includes/
 S_DIR = ./srcs/
@@ -106,27 +106,27 @@ GRAPHIC = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -fram
 all: $(NAME) $(CHECK)
 
 libft:
-	# @make -C ./library
+	@make -C ./libft
 
-$(NAME):
+$(NAME): libft
 	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(PS_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(NAME)$(C_GREEN) was compiled]$(C_RES)"
 
-$(CHECK):
+$(CHECK): libft
 	@gcc -o $(CHECK) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(LIB) $(SRCS) $(CH_M) $(GRAPHIC)
 	@echo "$(C_GREEN)[$(C_BLUE)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
-linux:
-	@gcc -o ps_linux $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(LIB)
-	@echo "$(C_GREEN)[$(C_BLUE)linux version$(C_GREEN) was compiled (no graphic)]$(C_RES)"
+nograph: libft
+	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(LIB)
+	@echo "$(C_GREEN)[Non-graphic version$(C_BLUE)$(NAME)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 clean:
-	# @make clean -C ./library
+	@make clean -C ./libft
 	@/bin/rm -rf $(O_DIR)
 	@echo "$(C_RED)[Objects deleted!]$(C_RES)"
 
 fclean: clean
-	# @make fclean -C ./library
+	@make fclean -C ./libft
 	@/bin/rm -f $(NAME) $(CHECK) ps_linux
 	@echo "$(C_RED)[Removed $(NAME) and $(CHECK)]$(C_RES)"
 
