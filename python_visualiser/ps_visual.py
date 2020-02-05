@@ -5,6 +5,7 @@ from ps_operators import PushSwap
 from time import sleep
 from PIL import Image
 from PIL import ImageTk
+import os
 
 
 def fetch_nblst(file_name = "./testfile"):
@@ -63,17 +64,18 @@ class TestGui(Tk):
 		self.submenu.add_separator()
 		self.submenu.add_command(label="Quit", command=self.exit_program)
 		# create toolbar
+		cdir = os.path.dirname(__file__)
 		self.toolbar = Frame(__window)
-		img = Image.open("resources/play.png")
+		img = Image.open(os.path.join(cdir, "resources/play.png"))
 		img = img.resize((20, 20), Image.ANTIALIAS)
 		self.img_play = ImageTk.PhotoImage(img)
-		img = Image.open("resources/pause.png")
+		img = Image.open(os.path.join(cdir, "resources/pause.png"))
 		img = img.resize((20, 20), Image.ANTIALIAS)
 		self.img_pause = ImageTk.PhotoImage(img)
-		img = Image.open("resources/next.png")
+		img = Image.open(os.path.join(cdir, "resources/next.png"))
 		img = img.resize((20, 20), Image.ANTIALIAS)
 		self.img_next = ImageTk.PhotoImage(img)
-		img = Image.open("resources/reset.png")
+		img = Image.open(os.path.join(cdir, "resources/reset.png"))
 		img = img.resize((20, 20), Image.ANTIALIAS)
 		self.img_reset = ImageTk.PhotoImage(img)
 		self.tbut1 = Button(self.toolbar, command = self.play_pause, image=self.img_play, width = "25", height="25")
