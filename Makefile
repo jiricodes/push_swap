@@ -101,6 +101,7 @@ L_SRCS = $(addprefix $(S_DIR), $(L_FTS))
 
 PS_M = ./srcs/main_pushswap.c
 CH_M = ./srcs/main_checker.c
+CNV_M = ./srcs/main_checker_novis.c
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -123,6 +124,7 @@ $(CHECK): libft
 
 nograph: libft
 	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(PS_M) $(LIB)
+	@gcc -o $(NAME) $(CFLAGS) -I$(I_DIR) -I$(LIB_I) $(L_SRCS) $(CNV_M) $(LIB)
 	@echo "$(C_GREEN)[Non-graphic version$(C_BLUE)$(NAME)$(CHECK)$(C_GREEN) was compiled]$(C_RES)"
 
 clean:

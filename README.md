@@ -30,8 +30,8 @@ The binary **checker** performs given commands on given array of integers. And r
 
 ## Solution Approach and Algorithm
 To solve the project I've been testing many sorting algorithms and pretty much any of them is usable. Those which benefit from additional stack are obviously beneficial here. However the pickle was to figure out which one to use in order to fulfill benchmarks for maximum amout of points.
-> 5 numbers - 12 maximum operations
-> 100 numbers - under 700 operations for full score
+> 5 numbers - 12 maximum operations\
+> 100 numbers - under 700 operations for full score\
 > 500 numbers - under 5500 operations for full score
 
 I've tried many few, but ended up with hybrid of quicksort and insertsort, both ajusted to fully optimize rotations.
