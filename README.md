@@ -50,11 +50,11 @@ made a special rule in makefile which compiles the program without the visualisa
 For visual version, requires 42-ecole graphic library [minilibx](https://github.com/gcamerli/minilibx).
 
 '''
-git clone https://github.com/forfungg/push_swap.git; cd push_swap; git submodule init; git submodule update; make
+git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd push_swap; make
 '''
 
 ### Non-visual
 
 '''
-git clone https://github.com/forfungg/push_swap.git; cd push_swap; git submodule init; git submodule update; make nograph
+git clone --recurse-submodules https://github.com/forfungg/push_swap.git; cd push_swap; make nograph
 '''
