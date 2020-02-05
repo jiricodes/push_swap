@@ -75,10 +75,15 @@ L_FTS =	check_sort.c \
 		list_man3.c \
 		list_man4.c \
 		list_print.c \
+		ps_init.c \
 		ps_iterquicksort.c \
+		ps_operations.c \
+		ps_operations2.c \
+		ps_operations3.c \
+		ps_qs_tools.c \
+		ps_qs_tools2.c \
+		ps_sortop3.c \
 		ps_tools.c \
-		push_swap_insertsort.c \
-		push_swap_merge.c \
 		push_swap_ops.c \
 		push_swap_iterquicksort_novis.c \
 		read_numbers.c
